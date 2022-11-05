@@ -12,10 +12,11 @@ sigla           char(2)
 
 create table tb_endereco(
 id_endereco           int primary key auto_increment,
-logradouro            varchar(50),
 cep                   varchar(8) not null,
-bairro                char(20),
-uf                    char(2),
+logradouro            varchar(60) not null,
+complemento			  varchar(200),
+bairro                varchar(60) not null,
+cidade				  varchar(60) not null,
 fk_id_uf              int,
 foreign key(fk_id_uf) references tb_uf(id_uf) 
 );
