@@ -17,6 +17,7 @@ public class UfService {
 	}
 	
 	public List<UfModel> listarUfs(){
+		System.out.println("Entrou na service");
 		List<UfModel> listaUf = repository.findAll();
 		return listaUf;
 	}

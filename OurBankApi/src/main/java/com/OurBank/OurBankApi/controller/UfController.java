@@ -3,9 +3,7 @@ package com.OurBank.OurBankApi.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.OurBank.OurBankApi.model.UfModel;
 import com.OurBank.OurBankApi.service.UfService;
@@ -21,8 +19,15 @@ public class UfController {
 		this.ufService = ufService;
 	}
 	
+	@GetMapping
 	public ResponseEntity<List<UfModel>> ListarUfs(){
-		return ResponseEntity.status(200).body(ufService.listarUfs());
+		List<UfModel> lista = ufService.listarUfs();
+		return ResponseEntity.status(200).body(lista);
+	}
+
+	@GetMapping("/teste")
+	public String Teste(){
+		return "Helloword";
 	}
 	
 }
