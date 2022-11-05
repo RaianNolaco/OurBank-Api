@@ -1,4 +1,4 @@
-show databases;
+--show databases;
 drop database db_OurBank;
 create database db_OurBank;
 use db_OurBank;
