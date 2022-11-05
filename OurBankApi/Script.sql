@@ -1,5 +1,5 @@
---show databases;
-drop database db_OurBank;
+show databases;
+drop database if exists db_OurBank;
 create database db_OurBank;
 use db_OurBank;
 show tables;
@@ -68,8 +68,6 @@ horario             datetime,
 descricao           varchar(20)
 );
 
-select * from tb_uf;
-
 INSERT INTO `tb_uf` (`estado`, `sigla`) VALUES
 ('Acre', 'AC'),
 ( 'Alagoas', 'AL'),
@@ -98,3 +96,5 @@ INSERT INTO `tb_uf` (`estado`, `sigla`) VALUES
 ('Sergipe', 'SE'),
 ('Sao Paulo', 'SP'),
 ('Tocantins', 'TO');
+
+select * from tb_uf;
