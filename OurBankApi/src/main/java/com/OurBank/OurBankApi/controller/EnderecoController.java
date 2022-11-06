@@ -17,6 +17,10 @@ import com.OurBank.OurBankApi.service.EnderecoService;
 public class EnderecoController {
      
     public EnderecoService enderecoService; 
+
+    public EnderecoController(EnderecoService endservice){
+		this.enderecoService = endservice;
+	}
     
     @GetMapping
     public ResponseEntity<List<EnderecoModel>> ListarEnderecos(){
