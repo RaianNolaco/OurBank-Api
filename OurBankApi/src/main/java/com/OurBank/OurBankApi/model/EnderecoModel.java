@@ -1,6 +1,5 @@
 package com.OurBank.OurBankApi.model;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
 import lombok.Data;
@@ -15,7 +14,7 @@ public class EnderecoModel {
     @Column(name = "id_endereco")
     private int id_endereco;
 
-    @Column(name = "", length = 8, nullable = true)
+    @Column(name = "cep", length = 8, nullable = true)
     private String cep;
 
     @Column(name = "logradouro", length = 60, nullable = true)
