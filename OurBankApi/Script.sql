@@ -102,7 +102,7 @@ insert into tb_endereco (cep,logradouro,complemento,bairro,cidade,fk_id_uf)  val
 ('01001000','Praça da Sé','Em frente catedral da sé','Sé','São Paulo',26),
 ('04696000','Avenida Engenheiro Eusébio Stevaux','Senac Santo amaro','Jurubatuba','São Paulo',26),
 ('30140010','Praça da Liberdade','Centro historico de bh','Savassi','Belo Horizonte',11),
-('22050900	','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19),
+('22050900','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19),
 ('01310200','Avenida Paulista','Museu de arte de são paulo','Bela Vista','São Paulo',26);
 
 select * from tb_uf
