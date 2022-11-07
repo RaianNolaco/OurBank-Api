@@ -20,7 +20,7 @@ public class EnderecoModel {
     @Column(name = "logradouro", length = 60, nullable = true)
     private String logradouro;
 
-    @Column(name = "complemento", length = 200, nullable = true)
+    @Column(name = "complemento", length = 200)
     private String complemento;
 
     @Column(name = "bairro", length = 60, nullable = true)
