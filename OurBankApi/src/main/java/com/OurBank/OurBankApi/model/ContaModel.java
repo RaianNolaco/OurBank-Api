@@ -1,5 +1,36 @@
 package com.OurBank.OurBankApi.model;
 
+import javax.persistence.Entity;
+
+import lombok.Data;
+import javax.persistence.*;
+
+@Data
+@Entity
+@Table(name = "tb_conta")
+
 public class ContaModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
+    @Column(name = "id_conta")
+    private int id_conta;
+
+    @Column(name = "num_conta", length = 16)
+    private String num_conta;
+
+    @Column(name = "cod_banco", length = 20)
+    private String cod_banco;
+
+    @Column(name = "agencia", length = 4)
+    private String agencia;
+
+    @Column(name = "saldo", length = 10)
+    private String saldo;
+
+    @Column(name = "fk_id_cliente", nullable = true)
+    private int fk_id_cliente;
+
     
 }
