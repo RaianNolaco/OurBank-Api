@@ -21,4 +21,9 @@ public class EnderecoService {
         return listaEndereco;
     }
 
+    public EnderecoModel addEndereco (EnderecoModel endereco) {
+        EnderecoModel novoEndereco = repository.save(endereco);
+        return novoEndereco;
+    }
+
 }

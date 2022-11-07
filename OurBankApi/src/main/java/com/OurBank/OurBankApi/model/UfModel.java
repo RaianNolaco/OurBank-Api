@@ -18,6 +18,6 @@ public class UfModel {
 	@Column(name = "estado", length = 25)
 	private String estado;
 	
-	@Column(name = "sigla", length =2)
+	@Column(name = "sigla", length = 2)
 	private String sigla;
 }
