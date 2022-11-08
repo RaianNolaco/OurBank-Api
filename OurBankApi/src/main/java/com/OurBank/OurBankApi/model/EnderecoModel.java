@@ -30,5 +30,9 @@ public class EnderecoModel {
     private String cidade;
 
     @Column(name = "fk_id_uf", nullable = true)
-    private int fk_id_uf;
+    private int idUf;
+
+    @Column(name = "fk_id_cliente", nullable = true)
+    private int idCliente;
+    
 }

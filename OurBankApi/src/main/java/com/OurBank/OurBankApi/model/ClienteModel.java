@@ -15,16 +15,16 @@ public class ClienteModel {
     @Column(name = "id_cliente")
     private int idConta;
 
-    @Column(name = "nome", length = 40, nullable = true)
+    @Column(name = "nome", length = 50, nullable = true)
     private String nome;
+
+    @Column(name = "sobrenome", length = 50, nullable = true)
+    private String sobrenome;    
    
     @Column(name = "cpf", length = 11)
     private String cpf;
 
     @Column(name = "data_nasc", nullable = true)
     private String dataNasc;
-
-    @Column(name = "fk_id_endereco", nullable = true)
-    private int fk_id_endereco;
 
 }
