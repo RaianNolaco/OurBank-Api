@@ -34,5 +34,7 @@ public class EnderecoController {
     public ResponseEntity<EnderecoModel> criarEndereco (@RequestBody EnderecoModel endereco) {
         return ResponseEntity.status(201).body(enderecoService.addEndereco(endereco));
     }
+
+    
     
 }
