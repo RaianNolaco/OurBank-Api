@@ -14,13 +14,13 @@ public class CartaoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
     @Column(name = "id_cartao")
-    private int id_cartao;
+    private int idCartao;
 
     @Column(name = "num_cartao", length = 20)
-    private String num_cartao;
+    private String numCartao;
 
     @Column(name = "data_validade", nullable = true)
-    private String data_validade;
+    private String dataValidade;
 
     @Column(name = "cvc", length = 3)
     private String cvc;

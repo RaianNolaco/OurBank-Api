@@ -13,7 +13,7 @@ public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-    private int id_conta;
+    private int idConta;
 
     @Column(name = "nome", length = 40, nullable = true)
     private String nome;
@@ -22,7 +22,7 @@ public class ClienteModel {
     private String cpf;
 
     @Column(name = "data_nasc", nullable = true)
-    private String data_nasc;
+    private String dataNasc;
 
     @Column(name = "fk_id_endereco", nullable = true)
     private int fk_id_endereco;

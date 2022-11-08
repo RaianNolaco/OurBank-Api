@@ -15,13 +15,13 @@ public class ContaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
     @Column(name = "id_conta")
-    private int id_conta;
+    private int idConta;
 
     @Column(name = "num_conta", length = 16)
-    private String num_conta;
+    private String numConta;
 
     @Column(name = "cod_banco", length = 20)
-    private String cod_banco;
+    private String codBanco;
 
     @Column(name = "agencia", length = 4)
     private String agencia;

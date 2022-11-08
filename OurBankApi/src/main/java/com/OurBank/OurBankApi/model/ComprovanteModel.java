@@ -14,16 +14,16 @@ public class ComprovanteModel {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 
 @Column(name = "id_comprovante")
-private int id_comprovante;
+private int idComprovante;
 
 @Column(name = "valor", length = 20)
 private String valor;
 
 @Column(name = "data_comprovante", nullable = true)
-private String data_comprovante;
+private String dataComprovante;
 
 @Column(name = "conta_beneficiario", length = 20)
-private String conta_beneficiario;
+private String contaBeneficiario;
 
 @Column(name = "descricao", length = 20)
 private String descricao;
