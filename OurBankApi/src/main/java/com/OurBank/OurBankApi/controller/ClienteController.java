@@ -2,7 +2,6 @@ package com.OurBank.OurBankApi.controller;
 
 import java.util.List;
 
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,11 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<ClienteModel> CadastrarCliente(@RequestBody ClienteModel usuario){
-        return ResponseEntity.status(200).body(clienteService.cadastrarCliente(usuario));
+        return ResponseEntity.status(201).body(clienteService.cadastrarCliente(usuario));
+    }
+
+    @PutMapping
+    public ResponseEntity<ClienteModel> EditarCliente(@RequestBody ClienteModel usuario){
+        return ResponseEntity.status(201).body(clienteService.EditarCliente(usuario));
     }
 }

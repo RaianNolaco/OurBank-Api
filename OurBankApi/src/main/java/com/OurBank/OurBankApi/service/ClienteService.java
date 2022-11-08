@@ -26,4 +26,10 @@ public class ClienteService {
         return novoCliente;
     }
 
+    //verificar isso dps
+    public ClienteModel EditarCliente(ClienteModel cliente){
+        ClienteModel editarCliente = repository.save(cliente);
+        return editarCliente;
+    }
+
 }
