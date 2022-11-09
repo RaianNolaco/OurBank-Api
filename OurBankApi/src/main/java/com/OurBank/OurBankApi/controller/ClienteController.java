@@ -1,10 +1,8 @@
 package com.OurBank.OurBankApi.controller;
 
 import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.OurBank.OurBankApi.model.ClienteModel;
 import com.OurBank.OurBankApi.service.ClienteService;
 
@@ -31,6 +29,17 @@ public class ClienteController {
 
     @PutMapping
     public ResponseEntity<ClienteModel> EditarCliente(@RequestBody ClienteModel usuario){
-        return ResponseEntity.status(201).body(clienteService.EditarCliente(usuario));
+        return ResponseEntity.status(201).body(clienteService.editarCliente(usuario));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ClienteModel> BuscarCliente(@PathVariable Integer id){ 
+        return ResponseEntity.status(200).body(clienteService.buscarCliente(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> DeletarCliente(@PathVariable Integer id){
+        clienteService.deletarCliente(id);
+        return ResponseEntity.status(204).build();
     }
 }
