@@ -26,4 +26,18 @@ public class EnderecoService {
         return novoEndereco;
     }
 
+    public EnderecoModel editaEndereco (EnderecoModel endereco){
+        EnderecoModel enderecoEditado =  repository.save(endereco);
+        return enderecoEditado;
+    }
+
+    public EnderecoModel buscarEndereco(int id){
+        EnderecoModel endereco = repository.findById(id).get();
+        return endereco;
+    }
+
+    public boolean deletarEndereco(Integer id) {
+        repository.deleteById(id);
+        return true;
+    }
 }
