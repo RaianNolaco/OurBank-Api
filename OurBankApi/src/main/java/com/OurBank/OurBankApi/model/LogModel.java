@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 
 import lombok.Data;
 
+//Está model representa a tabela de log no banco de dados
 @Data
 @Entity
 @Table(name = "tb_log")

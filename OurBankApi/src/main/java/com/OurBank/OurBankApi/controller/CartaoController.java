@@ -17,6 +17,7 @@ public class CartaoController {
         this.cartaoService = cartaoService;
     }
     
+    // Buscando cartão por Id
     @PutMapping("/{id}")
     public ResponseEntity<CartaoModel> desativarAproximCartao (@PathVariable Integer id) {
         return ResponseEntity.status(201).body(cartaoService.editarAproximacao(id));

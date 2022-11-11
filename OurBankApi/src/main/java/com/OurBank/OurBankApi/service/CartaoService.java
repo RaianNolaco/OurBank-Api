@@ -8,14 +8,14 @@ import com.OurBank.OurBankApi.repository.ICartao;
 @Service
 public class CartaoService {
 
-    private ICartao repository;
+    private ICartao repositoryCartao;
 
-    public CartaoService(ICartao repository) {
-        this.repository = repository;
+    public CartaoService(ICartao repositoryCartao) {
+        this.repositoryCartao = repositoryCartao;
     }
 
     public CartaoModel visualizarCartao (Integer cartaoId) {
-        CartaoModel cartao = repository.findById(cartaoId).get();
+        CartaoModel cartao = repositoryCartao.findById(cartaoId).get();
         return cartao;
     }
 
@@ -27,7 +27,7 @@ public class CartaoService {
         } else {
             cartao.setAproximacao(false);
         }
-        repository.save(cartao);
+        repositoryCartao.save(cartao);
         return cartao;
     }
 }

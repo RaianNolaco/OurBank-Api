@@ -40,6 +40,7 @@ public class EnderecoController {
         return ResponseEntity.status(200).body(enderecoService.buscarEndereco(id));
     }
 
+    //metodo serve para remover resgistro da base de dados
     @DeleteMapping("/{id}")
     public ResponseEntity<?> DeletarEndereco(@PathVariable Integer id){
         enderecoService.deletarEndereco(id);

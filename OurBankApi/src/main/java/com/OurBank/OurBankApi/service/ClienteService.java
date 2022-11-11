@@ -10,41 +10,45 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    private ICliente repository;
+    private ICliente repositoryCliente;
 
-    public ClienteService(ICliente repository){
-        this.repository = repository;
+    public ClienteService(ICliente repositoryCliente){
+        this.repositoryCliente = repositoryCliente;
     }
 
+    //listando todos os clientes 
     public List<ClienteModel> listarTodosUsuarios(){
-        List<ClienteModel> listaClientes = repository.findAll();
+        List<ClienteModel> listaClientes = repositoryCliente.findAll();
         return listaClientes;
     }
 
+    //adicionando um cliente novo
     public ClienteModel cadastrarCliente(ClienteModel cliente){
-        ClienteModel novoCliente = repository.save(cliente);
+        ClienteModel novoCliente = repositoryCliente.save(cliente);
         return novoCliente;
     }
 
-    //verificar isso dps
+    //editando os dados de um cliente
     public ClienteModel editarCliente(ClienteModel cliente){
-        ClienteModel editarCliente = repository.save(cliente);
+        ClienteModel editarCliente = repositoryCliente.save(cliente);
         return editarCliente;
     }
 
+    //buscando um cliente via Id
     public ClienteModel buscarCliente(Integer id){
-        ClienteModel cliente = repository.findById(id).get();
+        ClienteModel cliente = repositoryCliente.findById(id).get();
         return cliente;
     }
 
-    
+    //Buscando um cliente vida cpf
     public ClienteModel buscarClientePorCpf(String cpf){
-       ClienteModel cliente = repository.FindByCpf(cpf);
+       ClienteModel cliente = repositoryCliente.FindByCpf(cpf);
         return cliente;
     }
 
+    //deletando um cliente
     public boolean deletarCliente(Integer id) {
-        repository.deleteById(id);
+        repositoryCliente.deleteById(id);
         return true;
     }
 

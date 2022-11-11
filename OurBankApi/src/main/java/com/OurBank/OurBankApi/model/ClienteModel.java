@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+//Está model representa a tabela de clientes no banco de dados
 @Data
 @Entity
 @Table(name = "tb_cliente")

@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import lombok.Data;
 
+
+//Está model representa a tabela de cartoes no banco de dados
 @Data
 @Entity
 @Table(name = "tb_catao")

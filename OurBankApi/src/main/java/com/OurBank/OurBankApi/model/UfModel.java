@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import lombok.Data;
 import javax.persistence.*;
 
+//Está model representa a tabela de Uf no banco de dados
 @Data
 @Entity
 @Table(name = "tb_uf")
