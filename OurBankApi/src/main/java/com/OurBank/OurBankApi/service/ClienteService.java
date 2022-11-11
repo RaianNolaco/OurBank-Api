@@ -38,9 +38,17 @@ public class ClienteService {
         return cliente;
     }
 
+    
+    public ClienteModel buscarClientePorCpf(String cpf){
+       ClienteModel cliente = repository.FindByCpf(cpf);
+        return cliente;
+    }
+
     public boolean deletarCliente(Integer id) {
         repository.deleteById(id);
         return true;
     }
+
+    
 
 }
