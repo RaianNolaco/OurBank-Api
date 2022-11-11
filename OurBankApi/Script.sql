@@ -10,6 +10,14 @@ estado          varchar(25),
 sigla           char(2)
 );
 
+create table tb_cliente(
+id_cliente           int primary key auto_increment,
+nome                 varchar(50) not null,
+sobrenome			 varchar(50) not null,
+cpf                  varchar(11) unique,
+data_nasc            date
+);
+
 create table tb_endereco(
 id_endereco           int primary key auto_increment,
 cep                   varchar(8) not null,
@@ -18,16 +26,9 @@ complemento			  varchar(200),
 bairro                varchar(60) not null,
 cidade				  varchar(60) not null,
 fk_id_uf              int,
-foreign key(fk_id_uf) references tb_uf(id_uf) 
-);
-
-create table tb_cliente(
-id_cliente           int primary key auto_increment,
-nome                 varchar(40) not null,
-cpf                  varchar(11) unique,
-data_nasc            date,
-fk_id_endereco       int,
-foreign key(fk_id_endereco) references tb_endereco(id_endereco)
+fk_id_cliente 		  int,
+foreign key(fk_id_uf) references tb_uf(id_uf),
+foreign key(fk_id_cliente) references tb_cliente(id_cliente)
 );
 
 create table tb_conta(
@@ -69,16 +70,21 @@ horario             datetime,
 descricao           varchar(20)
 );
 
-INSERT INTO `tb_uf` (`estado`, `sigla`) VALUES
+select * from tb_uf;
+
+
+-- INSERTS
+
+INSERT INTO tb_uf (estado, sigla) VALUES
 ('Acre', 'AC'),
-( 'Alagoas', 'AL'),
-( 'Amazonas', 'AM'),
-( 'Amapa¡', 'AP'),
-( 'Bahia', 'BA'),
-( 'Ceara¡', 'CE'),
-( 'Distrito Federal', 'DF'),
-( 'Espirito Santo', 'ES'),
-( 'Goiais', 'GO'),
+('Alagoas', 'AL'),
+('Amazonas', 'AM'),
+('Amapa¡', 'AP'),
+('Bahia', 'BA'),
+('Ceara¡', 'CE'),
+('Distrito Federal', 'DF'),
+('Espirito Santo', 'ES'),
+('Goiais', 'GO'),
 ('Maranhao', 'MA'),
 ('Minas Gerais', 'MG'),
 ('Mato Grosso do Sul', 'MS'),
@@ -98,16 +104,20 @@ INSERT INTO `tb_uf` (`estado`, `sigla`) VALUES
 ('Sao Paulo', 'SP'),
 ('Tocantins', 'TO');
 
-insert into tb_endereco (cep,logradouro,complemento,bairro,cidade,fk_id_uf)  values 
-('01001000','Praça da Sé','Em frente catedral da sé','Sé','São Paulo',26),
-('04696000','Avenida Engenheiro Eusébio Stevaux','Senac Santo amaro','Jurubatuba','São Paulo',26),
-('30140010','Praça da Liberdade','Centro historico de bh','Savassi','Belo Horizonte',11),
-('22050900','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19),
-('01310200','Avenida Paulista','Museu de arte de são paulo','Bela Vista','São Paulo',26);
+insert into tb_cliente(nome,sobrenome,cpf,data_nasc) values
+("Raian","Medeiros","00000000000","2002/11/11"),
+("Vyviane","Souza","00000000001","2003/12/11"),
+("Mariana","Souza","00000000002","2003/09/08"),
+("Nathalia","da Rocha","00000000003","2002/03/10"),
+("Kevin","Alvez","00000000004","2004/11/23");
 
-select * from tb_uf
-where sigla like 'RJ';
+insert into tb_endereco (cep,logradouro,complemento,bairro,cidade,fk_id_uf,fk_id_cliente)  values 
+('01001000','Praça da Sé','Em frente catedral da sé','Sé','São Paulo',26,2),
+('04696000','Avenida Engenheiro Eusébio Stevaux','Senac Santo amaro','Jurubatuba','São Paulo',26,3),
+('30140010','Praça da Liberdade','Centro historico de bh','Savassi','Belo Horizonte',11,1),
+('22050900','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19,4),
+('01310200','Avenida Paulista','Museu de arte de são paulo','Bela Vista','São Paulo',26,5);
 
+select * from tb_uf;
+select * from tb_cliente;
 select * from tb_endereco;
-
-

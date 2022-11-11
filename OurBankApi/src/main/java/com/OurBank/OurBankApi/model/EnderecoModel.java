@@ -14,21 +14,25 @@ public class EnderecoModel {
     @Column(name = "id_endereco")
     private int id_endereco;
 
-    @Column(name = "cep", length = 8, nullable = true)
+    @Column(name = "cep", length = 8, nullable = false)
     private String cep;
 
-    @Column(name = "logradouro", length = 60, nullable = true)
+    @Column(name = "logradouro", length = 60, nullable = false)
     private String logradouro;
 
     @Column(name = "complemento", length = 200)
     private String complemento;
 
-    @Column(name = "bairro", length = 60, nullable = true)
+    @Column(name = "bairro", length = 60, nullable = false)
     private String bairro;
 
-    @Column(name = "cidade", length = 60, nullable = true)
+    @Column(name = "cidade", length = 60, nullable = false)
     private String cidade;
 
-    @Column(name = "fk_id_uf", nullable = true)
-    private int fk_id_uf;
+    @Column(name = "fk_id_uf", nullable = false)
+    private int idUf;
+
+    @Column(name = "fk_id_cliente", nullable = false)
+    private int idCliente;
+    
 }
