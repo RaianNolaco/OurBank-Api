@@ -19,19 +19,19 @@ public class CartaoModel {
     @Column(name = "num_cartao", length = 20)
     private String numCartao;
 
-    @Column(name = "data_validade", nullable = true)
+    @Column(name = "data_validade", nullable = false)
     private String dataValidade;
 
     @Column(name = "cvc", length = 3)
     private String cvc;
 
-    @Column(name = "aproximacao", nullable = true)
-    private String aproximacao;
+    @Column(name = "aproximacao", nullable = false)
+    private boolean aproximacao;
 
-    @Column(name = "ativo", nullable = true)
-    private String ativo;
+    @Column(name = "ativo", nullable = false)
+    private boolean ativo;
 
-    @Column(name = "fk_id_conta", nullable = true)
+    @Column(name = "fk_id_conta", nullable = false)
     private String fk_id_conta;
     
 }

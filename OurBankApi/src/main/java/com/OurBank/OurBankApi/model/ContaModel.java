@@ -29,7 +29,7 @@ public class ContaModel {
     @Column(name = "saldo", length = 10)
     private String saldo;
 
-    @Column(name = "fk_id_cliente", nullable = true)
+    @Column(name = "fk_id_cliente", nullable = false)
     private int fk_id_cliente;
 
     

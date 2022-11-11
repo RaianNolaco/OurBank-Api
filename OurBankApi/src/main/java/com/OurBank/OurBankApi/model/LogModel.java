@@ -18,7 +18,7 @@ public class LogModel {
     @Column(name = "id_log")
     private int id_log;
 
-    @Column(name = "horario", nullable = true)
+    @Column(name = "horario", nullable = false)
     private String horario;
 
     @Column(name = "descricao", length = 20)
