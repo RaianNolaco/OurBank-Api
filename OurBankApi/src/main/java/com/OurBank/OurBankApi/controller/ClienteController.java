@@ -42,4 +42,10 @@ public class ClienteController {
         clienteService.deletarCliente(id);
         return ResponseEntity.status(204).build();
     }
+    
+    
+    @GetMapping("cpf/{cpf}")
+    public ResponseEntity<ClienteModel> BuscarClientePorCpf(@PathVariable String cpf){ 
+        return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
+    }
 }
