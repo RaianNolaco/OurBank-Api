@@ -19,11 +19,14 @@ public class ClienteModel {
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
 
-    @Column(name = "sobrenome", length = 50, nullable = false)
-    private String sobrenome;    
+    @Column(name = "email", length = 80, nullable = false)
+    private String email;    
    
     @Column(name = "cpf", length = 11)
     private String cpf;
+
+    @Column(name = "senha", length = 11)
+    private String senha;
 
     @Column(name = "data_nasc", nullable = false)
     private String dataNasc;

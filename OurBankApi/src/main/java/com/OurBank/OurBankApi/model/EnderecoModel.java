@@ -21,6 +21,9 @@ public class EnderecoModel {
     @Column(name = "logradouro", length = 60, nullable = false)
     private String logradouro;
 
+    @Column(name = "numero", length = 10, nullable = false)
+    private String numero;
+
     @Column(name = "complemento", length = 200)
     private String complemento;
 
