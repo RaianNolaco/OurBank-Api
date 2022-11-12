@@ -16,6 +16,7 @@ public class UfService {
 		this.repository = repository;
 	}
 	
+	//metodo que busca do bando de dados a lista de ufs
 	public List<UfModel> listarUfs(){
 		List<UfModel> listaUf = repository.findAll();
 		return listaUf;

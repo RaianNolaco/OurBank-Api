@@ -1,6 +1,5 @@
 package com.OurBank.OurBankApi.controller;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 public class Validator {
     
+    /* A função validationException serve para pegar os exeptions vindos das outras classes e retorna
+    apenas a mensagem definida por nós ao inves do erro completo*/ 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String,String> validationException (MethodArgumentNotValidException ex) {
