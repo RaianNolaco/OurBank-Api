@@ -42,7 +42,7 @@ public class ClienteService {
 
     //Buscando um cliente vida cpf
     public ClienteModel buscarClientePorCpf(String cpf){
-       ClienteModel cliente = repositoryCliente.FindByCpf(cpf);
+       ClienteModel cliente = repositoryCliente.findByCpf(cpf);
         return cliente;
     }
 

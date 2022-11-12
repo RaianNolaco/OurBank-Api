@@ -15,6 +15,6 @@ public interface ICliente extends JpaRepository<ClienteModel,Integer>, JpaSpecif
     
     // aqui no metodo nos expecificamos para o JPA que queremos execultar a varivel BUSCAR_POR_CPF 
     @Query(value = BUSCAR_POR_CPF,nativeQuery = true)
-    public ClienteModel FindByCpf(@Param("cpf")final String cpf);
+    public ClienteModel findByCpf(@Param("cpf")final String cpf);
 }
 
