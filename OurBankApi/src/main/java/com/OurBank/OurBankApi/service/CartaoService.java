@@ -21,13 +21,20 @@ public class CartaoService {
         return cartoes;
     }
 
-    public CartaoModel visualizarCartao (Integer cartaoId) {
+    // Função geral de visualização por ID
+    public CartaoModel visualizarCartaoId (Integer cartaoId) {
         CartaoModel cartao = repositoryCartao.findById(cartaoId).get();
         return cartao;
     }
 
-    public CartaoModel editarAproximacao (Integer id) {
-        CartaoModel cartao = visualizarCartao(id);
+    // Função geral de visualização por NUMERO DO CARTÃO
+    public CartaoModel visualizarCartaoNumero (String numCartao) {
+        CartaoModel cartao = repositoryCartao.findByNumeroCartao(numCartao);
+        return cartao;
+    }
+
+    public CartaoModel editarAproximacaoId (Integer id) {
+        CartaoModel cartao = visualizarCartaoId(id);
 
         if (!(cartao.isAproximacao())) {
             cartao.setAproximacao(true);
@@ -38,14 +45,40 @@ public class CartaoService {
         return cartao;
     }
 
-    public CartaoModel editarAproximacao (String numeroCartao) {
-        CartaoModel cartao = repositoryCartao.findByNumeroCartao(numeroCartao);
+    public CartaoModel editarAproximacaoNum (String numeroCartao) {
+        CartaoModel cartao = visualizarCartaoNumero(numeroCartao);
 
         if (!(cartao.isAproximacao())) {
             cartao.setAproximacao(true);
         } else {
             cartao.setAproximacao(false);
         }
+        repositoryCartao.save(cartao);
+        return cartao;
+    }
+
+    public CartaoModel desativarCartaoId (Integer id) {
+        CartaoModel cartao = visualizarCartaoId(id);
+
+        if (!(cartao.isAtivo())) {
+            cartao.setAtivo(true);
+        } else {
+            cartao.setAtivo(false);
+        }
+
+        repositoryCartao.save(cartao);
+        return cartao;
+    }
+
+    public CartaoModel desativarCartaoNum (String numCartao) {
+        CartaoModel cartao = visualizarCartaoNumero(numCartao);
+
+        if (!(cartao.isAtivo())) {
+            cartao.setAproximacao(true);
+        } else {
+            cartao.setAproximacao(false);
+        }
+
         repositoryCartao.save(cartao);
         return cartao;
     }

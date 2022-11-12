@@ -24,13 +24,31 @@ public class CartaoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CartaoModel> buscarCartao (@PathVariable Integer id) {
-        return ResponseEntity.status(201).body(cartaoService.visualizarCartao(id));
+        return ResponseEntity.status(200).body(cartaoService.visualizarCartaoId(id));
     }
     
-    //Destiva a aprocimação do cartão por Id
+    //Destiva a aproximação do cartão por Numero do cartao
     @PutMapping("ativaraprocimacao")
-    public ResponseEntity<CartaoModel> desativarAproximCartao (@RequestHeader String numeroCartao) {
-        return ResponseEntity.status(201).body(cartaoService.editarAproximacao(numeroCartao));
+    public ResponseEntity<CartaoModel> desativarAproximCartaoNum (@RequestHeader String numeroCartao) {
+        return ResponseEntity.status(201).body(cartaoService.editarAproximacaoNum(numeroCartao));
+    }
+
+    // Desativa a aproximação do cartão por Id
+    @PutMapping("/aproximacao/{id}")
+    public ResponseEntity<CartaoModel> desativarAproximCartaoId (@PathVariable Integer id) {
+        return ResponseEntity.status(201).body(cartaoService.editarAproximacaoId(id));
+    }
+
+    // Desativa o cartão por ID
+    @PutMapping("/{id}")
+    public ResponseEntity<CartaoModel> desativarCartaoId (@PathVariable Integer id) {
+        return ResponseEntity.status(201).body(cartaoService.desativarCartaoId(id));
+    }
+
+    // Desativa o cartão por Numero do cartão
+    @PutMapping("ativarcartao")
+    public ResponseEntity<CartaoModel> desativarCartaoNum (@RequestHeader String numeroCartao) {
+        return ResponseEntity.status(201).body(cartaoService.desativarCartaoNum(numeroCartao));
     }
 
 
