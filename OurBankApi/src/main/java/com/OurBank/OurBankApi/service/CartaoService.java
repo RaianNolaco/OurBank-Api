@@ -36,7 +36,7 @@ public class CartaoService {
     public CartaoModel editarAproximacaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
-        if (!(cartao.isAproximacao())) {
+        if (!cartao.isAproximacao()) {
             cartao.setAproximacao(true);
         } else {
             cartao.setAproximacao(false);
@@ -48,7 +48,7 @@ public class CartaoService {
     public CartaoModel editarAproximacaoNum (String numeroCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numeroCartao);
 
-        if (!(cartao.isAproximacao())) {
+        if (!cartao.isAproximacao()) {
             cartao.setAproximacao(true);
         } else {
             cartao.setAproximacao(false);
@@ -60,7 +60,7 @@ public class CartaoService {
     public CartaoModel desativarCartaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
-        if (!(cartao.isAtivo())) {
+        if (!cartao.isAtivo()) {
             cartao.setAtivo(true);
         } else {
             cartao.setAtivo(false);
@@ -73,10 +73,10 @@ public class CartaoService {
     public CartaoModel desativarCartaoNum (String numCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numCartao);
 
-        if (!(cartao.isAtivo())) {
-            cartao.setAproximacao(true);
+        if (!cartao.isAtivo()) {
+            cartao.setAtivo(true);
         } else {
-            cartao.setAproximacao(false);
+            cartao.setAtivo(false);
         }
 
         repositoryCartao.save(cartao);
