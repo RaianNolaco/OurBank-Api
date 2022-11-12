@@ -22,56 +22,53 @@ create table tb_endereco(
 id_endereco           int primary key auto_increment,
 cep                   varchar(8) not null,
 logradouro            varchar(60) not null,
-complemento			  varchar(200),
+complemento			  varchar(300),
 bairro                varchar(60) not null,
 cidade				  varchar(60) not null,
-fk_id_uf              int,
-fk_id_cliente 		  int,
+fk_id_uf              int not null,
+fk_id_cliente 		  int not null,
 foreign key(fk_id_uf) references tb_uf(id_uf),
 foreign key(fk_id_cliente) references tb_cliente(id_cliente)
 );
 
 create table tb_conta(
 id_conta           int primary key auto_increment,
-num_conta          varchar(16),
-cod_banco          varchar(20),
-agencia            varchar(4),
+num_conta          varchar(16) not null unique,
+cod_banco          varchar(20) not null,
+agencia            varchar(4) not null,
 saldo              decimal(10.2),
-fk_id_cliente      int,
+fk_id_cliente      int not null,
 foreign key(fk_id_cliente) references tb_cliente(id_cliente)
 );
 
 
 create table tb_cartao(
 id_cartao           int primary key auto_increment,
-num_cartao          int(20),
-data_validade       date,
-cvc                 varchar(3),
-aproximacao         boolean,
-ativo               boolean,
-fk_id_conta         int,
+num_cartao          varchar(10) not null unique,
+data_validade       date not null,
+cvc                 varchar(3)not null,
+aproximacao         boolean not null,
+ativo               boolean not null, 
+fk_id_conta         int not null,
 foreign key(fk_id_conta) references tb_conta(id_conta)
 );
 select * from tb_cartao;
 
 create table tb_comprovante(
 id_comprovante           int primary key auto_increment,
-valor                    varchar(20),    
-data_comprovante         datetime,
-conta_beneficiario       varchar(20),
-descricao                varchar(20),
-fk_id_conta              int,
+valor                    varchar(20) not null,    
+data_comprovante         datetime not null,
+conta_beneficiario       varchar(20) not null, 
+descricao                varchar(300),
+fk_id_conta              int not null,
 foreign key(fk_id_conta) references tb_conta(id_conta)
 );
 
 create table tb_log(
 id_log              int primary key auto_increment,
 horario             datetime,
-descricao           varchar(20)
+descricao           varchar(300)
 );
-
-select * from tb_uf;
-
 
 -- INSERTS
 
@@ -118,6 +115,24 @@ insert into tb_endereco (cep,logradouro,complemento,bairro,cidade,fk_id_uf,fk_id
 ('22050900','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19,4),
 ('01310200','Avenida Paulista','Museu de arte de são paulo','Bela Vista','São Paulo',26,5);
 
+insert into tb_conta (num_conta,cod_banco,agencia,saldo,fk_id_cliente)  values 
+					("0000001",42,002,10,1),
+                    ("0000002",42,002,10,2),
+                    ("0000003",42,002,10,3),
+                    ("0000004",42,002,10,4),
+                    ("0000005",42,002,10,5);
+
+insert into tb_cartao (num_cartao,data_validade,cvc,aproximacao,ativo,fk_id_conta)  values 
+					("000000001",'2025/12/11',123,true,true,1),
+                    ("000000002",'2026/11/20',321,false,false,2),
+                    ("000000003",'2028/02/11',123,true,false,3),
+                    ("000000004",'2030/01/17',321,false,true,4),
+                    ("000000005",'2027/07/09',321,false,true,5);
+                    
+                    
+
 select * from tb_uf;
 select * from tb_cliente;
 select * from tb_endereco;
+select * from tb_conta;
+select * from tb_cartao;
