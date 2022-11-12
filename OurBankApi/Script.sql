@@ -13,8 +13,9 @@ sigla           char(2)
 create table tb_cliente(
 id_cliente           int primary key auto_increment,
 nome                 varchar(50) not null,
-sobrenome			 varchar(50) not null,
+email				 varchar(80) not null,
 cpf                  varchar(11) unique,
+senha				 varchar(20) not null,
 data_nasc            date
 );
 
@@ -22,6 +23,7 @@ create table tb_endereco(
 id_endereco           int primary key auto_increment,
 cep                   varchar(8) not null,
 logradouro            varchar(60) not null,
+numero   			  varchar(10)not null,
 complemento			  varchar(300),
 bairro                varchar(60) not null,
 cidade				  varchar(60) not null,
@@ -101,19 +103,19 @@ INSERT INTO tb_uf (estado, sigla) VALUES
 ('Sao Paulo', 'SP'),
 ('Tocantins', 'TO');
 
-insert into tb_cliente(nome,sobrenome,cpf,data_nasc) values
-("Raian","Medeiros","00000000000","2002/11/11"),
-("Vyviane","Souza","00000000001","2003/12/11"),
-("Mariana","Souza","00000000002","2003/09/08"),
-("Nathalia","da Rocha","00000000003","2002/03/10"),
-("Kevin","Alvez","00000000004","2004/11/23");
+insert into tb_cliente(nome,email,cpf,senha,data_nasc) values
+("Raian Medeiros","RaiNolac@gmail.com","00000000000","123abc","2002/11/11"),
+("Vyviane Souza","Vyvis@yahoo.com","00000000001","456dfg","2003/12/11"),
+("Mariana Souza","MariSou@hotmail.com","00000000002","789hij","2003/09/08"),
+("Nathalia da Rocha","Rocha@gmail.com","00000000003","101klm","2002/03/10"),
+("Kevin Alvez","Kalves@gmail.com","00000000004","121nop","2004/11/23");
 
-insert into tb_endereco (cep,logradouro,complemento,bairro,cidade,fk_id_uf,fk_id_cliente)  values 
-('01001000','Praça da Sé','Em frente catedral da sé','Sé','São Paulo',26,2),
-('04696000','Avenida Engenheiro Eusébio Stevaux','Senac Santo amaro','Jurubatuba','São Paulo',26,3),
-('30140010','Praça da Liberdade','Centro historico de bh','Savassi','Belo Horizonte',11,1),
-('22050900','Avenida Nossa Senhora de Copacabana','praia de copacabana','Copacabana','Rio de Janeiro',19,4),
-('01310200','Avenida Paulista','Museu de arte de são paulo','Bela Vista','São Paulo',26,5);
+insert into tb_endereco (cep,logradouro,numero,complemento,bairro,cidade,fk_id_uf,fk_id_cliente)  values 
+('01001000','Praça da Sé',"12",'Em frente catedral da sé','Sé','São Paulo',26,2),
+('04696000','Avenida Engenheiro Eusébio Stevaux',"56",'Senac Santo amaro','Jurubatuba','São Paulo',26,3),
+('30140010','Praça da Liberdade',"32C",'Centro historico de bh','Savassi','Belo Horizonte',11,1),
+('22050900','Avenida Nossa Senhora de Copacabana',"16",'praia de copacabana','Copacabana','Rio de Janeiro',19,4),
+('01310200','Avenida Paulista',"32",'Museu de arte de são paulo','Bela Vista','São Paulo',26,5);
 
 insert into tb_conta (num_conta,cod_banco,agencia,saldo,fk_id_cliente)  values 
 					("0000001",42,002,10,1),
