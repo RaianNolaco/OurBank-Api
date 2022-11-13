@@ -28,7 +28,7 @@ public class CartaoController {
     }
     
     //Destiva a aproximação do cartão por Numero do cartao
-    @PutMapping("/aprocimacao")
+    @PutMapping("/aproximacao")
     public ResponseEntity<CartaoModel> desativarAproximCartaoNum (@RequestHeader String numeroCartao) {
         return ResponseEntity.status(201).body(cartaoService.editarAproximacaoNum(numeroCartao));
     }

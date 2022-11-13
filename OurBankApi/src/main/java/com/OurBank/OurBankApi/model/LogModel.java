@@ -15,13 +15,20 @@ public class LogModel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_log")
     private int id_log;
 
     @Column(name = "horario", nullable = false)
     private String horario;
 
-    @Column(name = "descricao", length = 20)
+    @Column(name = "descricao", length = 300)
     private String descricao;
+
+    public LogModel(){
+    }
+
+    public LogModel(String horario,String descricao){
+        this.horario = horario;
+        this.descricao = descricao;
+    }
 }

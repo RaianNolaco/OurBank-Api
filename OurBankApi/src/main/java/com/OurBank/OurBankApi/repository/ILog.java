@@ -5,3 +5,4 @@ import com.OurBank.OurBankApi.model.LogModel;
 
 public interface ILog extends JpaRepository<LogModel,Integer> {   
 }
+

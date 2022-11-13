@@ -11,9 +11,11 @@ import com.OurBank.OurBankApi.repository.IComprovante;
 public class ComprovanteService {
 
     private IComprovante repository;
+    private LogService logService;
 
-    public ComprovanteService(IComprovante repository) {
+    public ComprovanteService(IComprovante repository,LogService logService) {
         this.repository = repository;
+        this.logService = logService;
     }
     
     // listando todos os comprovantes da base de dados
@@ -24,8 +26,12 @@ public class ComprovanteService {
 
     // Criando um comprovante novo na base de dados
     public ComprovanteModel gerarComprovante(ComprovanteModel comprovante) {
-        ComprovanteModel gerarComprovante = repository.save(comprovante);
-        return gerarComprovante;
+        repository.save(comprovante);
+
+        String descricao = "COMPROVANTE GERADO | METODO: POST | DATA COMPROVANTE : " +comprovante.getDataComprovante()+ " | ID CONTA: " + comprovante.getFk_id_conta() ;
+        logService.gravarLog(descricao);
+
+        return comprovante;
     }
 
     // Editando os dados de um comprovante
@@ -42,6 +48,12 @@ public class ComprovanteService {
 
     // Deletando comprovante via ID
     public Boolean deletarComprovante(Integer id) {
+
+        ComprovanteModel comprovante = repository.findById(id).get();
+
+        String descricao = "COMPROVANTE DELTADO| METODO: DELETE | DATA COMPROVANTE : " +comprovante.getDataComprovante()+ " | ID CONTA: " + comprovante.getFk_id_conta() ;
+        logService.gravarLog(descricao);
+
         repository.deleteById(id);
         return true;
     }

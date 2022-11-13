@@ -11,9 +11,11 @@ import com.OurBank.OurBankApi.repository.ICartao;
 public class CartaoService {
 
     private ICartao repositoryCartao;
+    private LogService logService;
 
-    public CartaoService(ICartao repositoryCartao) {
+    public CartaoService(ICartao repositoryCartao, LogService logService) {
         this.repositoryCartao = repositoryCartao;
+        this.logService = logService;
     }
 
     public List<CartaoModel> listarTodosCartoes(){
@@ -37,12 +39,20 @@ public class CartaoService {
     public CartaoModel editarAproximacaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
+        String descricao;
         if (!cartao.isAproximacao()) {
             cartao.setAproximacao(true);
+            descricao = "APROXIMACAO CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         } else {
             cartao.setAproximacao(false);
+            descricao = "APROXIMACAO CARTAO DESATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         }
+
         repositoryCartao.save(cartao);
+        logService.gravarLog(descricao);
+        
         return cartao;
     }
 
@@ -50,12 +60,20 @@ public class CartaoService {
     public CartaoModel editarAproximacaoNum (String numeroCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numeroCartao);
 
+        String descricao;
         if (!cartao.isAproximacao()) {
             cartao.setAproximacao(true);
+            descricao = "APROXIMACAO CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         } else {
             cartao.setAproximacao(false);
+            descricao = "APROXIMACAO CARTAO DESATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         }
+
         repositoryCartao.save(cartao);
+        logService.gravarLog(descricao);
+
         return cartao;
     }
 
@@ -63,13 +81,20 @@ public class CartaoService {
     public CartaoModel desativarCartaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
+        String descricao;
         if (!cartao.isAtivo()) {
             cartao.setAtivo(true);
+            descricao = "CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         } else {
             cartao.setAtivo(false);
+            descricao = "CARTAO DESATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         }
 
         repositoryCartao.save(cartao);
+        logService.gravarLog(descricao);
+
         return cartao;
     }
 
@@ -77,13 +102,21 @@ public class CartaoService {
     public CartaoModel desativarCartaoNum (String numCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numCartao);
 
+
+        String descricao;
         if (!cartao.isAtivo()) {
             cartao.setAtivo(true);
+            descricao = "CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         } else {
             cartao.setAtivo(false);
+            descricao = "CARTAO DESATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+
         }
 
         repositoryCartao.save(cartao);
+        logService.gravarLog(descricao);
+
         return cartao;
     }
 }

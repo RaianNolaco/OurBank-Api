@@ -11,9 +11,11 @@ import com.OurBank.OurBankApi.repository.IEndereco;
 public class EnderecoService {
     
     private IEndereco repositoryEndereco;
+    private LogService logService;
 
-    public EnderecoService(IEndereco repositoryEndereco){
+    public EnderecoService(IEndereco repositoryEndereco,LogService logService){
         this.repositoryEndereco = repositoryEndereco;
+        this.logService = logService;
     }
 
     // buscando todos os endereços no banco de dados
@@ -24,8 +26,12 @@ public class EnderecoService {
 
     //adicionando um endereço no banco de dados
     public EnderecoModel addEndereco (EnderecoModel endereco) {
-        EnderecoModel novoEndereco = repositoryEndereco.save(endereco);
-        return novoEndereco;
+        repositoryEndereco.save(endereco);
+
+        String descricao = "ENDERECO CADASTRADO | METODO: POST | CEP : " + endereco.getCep()+ " | ID CLIENTE: " + endereco.getIdCliente() ;
+        logService.gravarLog(descricao);
+
+        return endereco;
     }
 
     //editando um enderço no banco de dados
@@ -43,6 +49,12 @@ public class EnderecoService {
     //deletando um endereço do banco de dados
     public boolean deletarEndereco(Integer id) {
         repositoryEndereco.deleteById(id);
+
+        EnderecoModel endereco = repositoryEndereco.findById(id).get();
+
+        String descricao = "ENDERECO DELETADO | METODO: POST | CEP : " + endereco.getCep()+ " | ID CLIENTE: " + endereco.getIdCliente() ;
+        logService.gravarLog(descricao);
+
         return true;
     }
 }

@@ -11,9 +11,11 @@ import com.OurBank.OurBankApi.repository.IConta;
 public class ContaService {
 
     private IConta contaRepository;
+    private LogService logService;
 
-    public ContaService(IConta contaRepository){
+    public ContaService(IConta contaRepository,LogService logService){
         this.contaRepository = contaRepository;
+        this.logService = logService;
     }
 
     // Listando todas as contas
@@ -29,12 +31,21 @@ public class ContaService {
     // Cadastrando uma nova contra
     public ContaModel cadastrarConta(ContaModel conta){
         contaRepository.save(conta);
+
+        String descricao = "CONTRA CADASTRADA | METODO: POST | NUMERO CONTA : " +conta.getNumConta()+ " | ID CLIENTE: " + conta.getFk_id_cliente() ;
+        logService.gravarLog(descricao);
+
         return conta;
     }
 
     // Editando os dados de uma conta
     public boolean deletarConta(int id){
         contaRepository.deleteById(id);
+        ContaModel conta =  contaRepository.findById(id).get();
+
+        String descricao = "CONTRA DELETADA | METODO: DELETE | NUMERO CONTA : " +conta.getNumConta()+ " | ID CLIENTE: " + conta.getFk_id_cliente() ;
+        logService.gravarLog(descricao);
+
         return true;
     }
 

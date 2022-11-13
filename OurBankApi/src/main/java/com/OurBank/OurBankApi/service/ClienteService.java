@@ -11,9 +11,12 @@ import java.util.List;
 public class ClienteService {
 
     private ICliente repositoryCliente;
+    private LogService logService; 
 
-    public ClienteService(ICliente repositoryCliente){
+    
+    public ClienteService(ICliente repositoryCliente, LogService logService){
         this.repositoryCliente = repositoryCliente;
+        this.logService = logService;
     }
 
     //listando todos os clientes 
@@ -25,6 +28,9 @@ public class ClienteService {
     //adicionando um cliente novo
     public ClienteModel cadastrarCliente(ClienteModel cliente){
         ClienteModel novoCliente = repositoryCliente.save(cliente);
+
+        String descricao = "CLIENTE CADASTRADO| METODO: POST | NOME : " +cliente.getNome()+ " | CPF: " + cliente.getCpf() ;
+        logService.gravarLog(descricao);
         return novoCliente;
     }
 
@@ -48,6 +54,11 @@ public class ClienteService {
 
     //deletando um cliente
     public boolean deletarCliente(Integer id) {
+        ClienteModel cliente = repositoryCliente.findById(id).get();
+
+        String descricao = "CLIENTE DELETADO | METODO: DELETE | NOME : " +cliente.getNome()+ " | CPF: " + cliente.getCpf() ;
+        logService.gravarLog(descricao);
+
         repositoryCliente.deleteById(id);
         return true;
     }
