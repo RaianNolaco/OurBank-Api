@@ -25,14 +25,20 @@ public class UfController {
 
 	// metodo ultilizado para listar todos os Uf
 	@GetMapping
-	public ResponseEntity<List<UfModel>> ListarUfs(){
+	public ResponseEntity<List<UfModel>> listarUfs(){
 		List<UfModel> lista = ufService.listarUfs();
 		return ResponseEntity.status(200).body(lista);
 	}
 
-	@GetMapping("/teste")
-	public String Teste(){
-		return "Helloword";
+	@GetMapping("/{id}")
+	public ResponseEntity<UfModel>buscarUf(@PathVariable int id){
+		return ResponseEntity.status(200).body(ufService.buscarUf(id));
+	}
+
+	@GetMapping("/uf")
+	public ResponseEntity<UfModel>buscarUfporUf(@RequestHeader String uf){
+		String ufUpper = uf.toUpperCase();
+		return ResponseEntity.status(200).body(ufService.buscarUfporUF(ufUpper));
 	}
 	
 }

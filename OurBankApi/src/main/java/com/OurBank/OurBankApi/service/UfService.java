@@ -10,16 +10,23 @@ import com.OurBank.OurBankApi.repository.IUf;
 @Service
 public class UfService {
 
-	private IUf repository;
+	private IUf repositoryUf;
 	
-	public UfService(IUf repository) {
-		this.repository = repository;
+	public UfService(IUf repositoryUf) {
+		this.repositoryUf = repositoryUf;
 	}
 	
 	//metodo que busca do bando de dados a lista de ufs
 	public List<UfModel> listarUfs(){
-		List<UfModel> listaUf = repository.findAll();
+		List<UfModel> listaUf = repositoryUf.findAll();
 		return listaUf;
 	}
+
+	public UfModel buscarUf(int id){
+		return repositoryUf.findById(id).get();
+	}
 	
+	public UfModel buscarUfporUF(String uf){
+		return repositoryUf.findByUf(uf);
+	}
 }
