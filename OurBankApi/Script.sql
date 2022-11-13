@@ -38,7 +38,7 @@ id_conta           int primary key auto_increment,
 num_conta          varchar(16) not null unique,
 cod_banco          varchar(20) not null,
 agencia            varchar(4) not null,
-saldo              decimal(10.2),
+saldo              double,
 fk_id_cliente      int not null,
 foreign key(fk_id_cliente) references tb_cliente(id_cliente)
 );
@@ -68,7 +68,7 @@ foreign key(fk_id_conta) references tb_conta(id_conta)
 
 create table tb_log(
 id_log              int primary key auto_increment,
-horario             datetime,
+horario             varchar(30),
 descricao           varchar(300)
 );
 
@@ -131,10 +131,30 @@ insert into tb_cartao (num_cartao,data_validade,cvc,aproximacao,ativo,fk_id_cont
                     ("000000004",'2030/01/17',321,false,true,4),
                     ("000000005",'2027/07/09',321,false,true,5);
                     
+insert into tb_comprovante (valor,data_comprovante,conta_beneficiario,descricao,fk_id_conta) value
+(100,'2022/11/12','0000002','pagamento',1),
+(50,'2022/11/19','0000002','pagamento',2),
+(10,'2022/01/17','0000003','trasferencia',3),
+(100,'2022/11/12','0000004','pagamento',1),
+(100,'2022/01/30','0000002','trasferencia',4),
+(230,'2022/11/12','0000002','pagamento',5),
+(100,'2022/12/29','0000001','pagamento',2),
+(100,'2022/03/10','0000003','trasferencia',3),
+(100,'2022/05/12','0000004','trasferencia',2),
+(100,'2022/11/22','0000001','pagamento',5),
+(100,'2022/02/12','0000005','trasferencia',4),
+(100,'2022/06/15','0000001','trasferencia',2),
+(10,'2022/03/13','0000002','pagamento',3);                    
+                    
                     
 
-select * from tb_uf;
+select * from tb_uf;	
 select * from tb_cliente;
 select * from tb_endereco;
+select * from tb_comprovante;
 select * from tb_conta;
+
+UPDATE tb_conta SET saldo = saldo + 100 WHERE num_conta = '0000001';
 select * from tb_cartao;
+
+Select * from tb_log;	
