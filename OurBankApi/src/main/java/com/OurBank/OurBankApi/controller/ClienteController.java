@@ -17,30 +17,40 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
+    // buisca todos clientes da base de dados
     @GetMapping
     public ResponseEntity<List<ClienteModel>> ListarTodosClientes(){
         return ResponseEntity.status(200).body(clienteService.listarTodosUsuarios());
     }
 
+    // incluindo cliente
     @PostMapping
     public ResponseEntity<ClienteModel> CadastrarCliente(@RequestBody ClienteModel usuario){
         return ResponseEntity.status(201).body(clienteService.cadastrarCliente(usuario));
     }
 
+    // Editando cliente 
     @PutMapping
     public ResponseEntity<ClienteModel> EditarCliente(@RequestBody ClienteModel usuario){
         return ResponseEntity.status(201).body(clienteService.editarCliente(usuario));
     }
 
+    // buscando cliente por id
     @GetMapping("/{id}")
     public ResponseEntity<ClienteModel> BuscarCliente(@PathVariable Integer id){ 
         return ResponseEntity.status(200).body(clienteService.buscarCliente(id));
     }
 
+    //Está model representa a tabela de Uf no banco de dados
     @DeleteMapping("/{id}")
     public ResponseEntity<?> DeletarCliente(@PathVariable Integer id){
         clienteService.deletarCliente(id);
         return ResponseEntity.status(204).build();
     }
+    
+    
+    @GetMapping("/cpf")
+    public ResponseEntity<ClienteModel> BuscarClientePorCpf(@RequestHeader String cpf){ 
+        return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
+    }
 }
- 

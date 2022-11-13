@@ -10,20 +10,39 @@ import com.OurBank.OurBankApi.repository.IEndereco;
 @Service
 public class EnderecoService {
     
-    private IEndereco repository;
+    private IEndereco repositoryEndereco;
 
-    public EnderecoService(IEndereco repository){
-        this.repository = repository;
+    public EnderecoService(IEndereco repositoryEndereco){
+        this.repositoryEndereco = repositoryEndereco;
     }
 
+    // buscando todos os endereços no banco de dados
     public List<EnderecoModel> listarEnderecos(){
-        List<EnderecoModel> listaEndereco = repository.findAll();
+        List<EnderecoModel> listaEndereco = repositoryEndereco.findAll();
         return listaEndereco;
     }
 
+    //adicionando um endereço no banco de dados
     public EnderecoModel addEndereco (EnderecoModel endereco) {
-        EnderecoModel novoEndereco = repository.save(endereco);
+        EnderecoModel novoEndereco = repositoryEndereco.save(endereco);
         return novoEndereco;
     }
 
+    //editando um enderço no banco de dados
+    public EnderecoModel editaEndereco (EnderecoModel endereco){
+        EnderecoModel enderecoEditado =  repositoryEndereco.save(endereco);
+        return enderecoEditado;
+    }
+
+    //buscando um endereço por id no banco de dado
+    public EnderecoModel buscarEndereco(int id){
+        EnderecoModel endereco = repositoryEndereco.findById(id).get();
+        return endereco;
+    }
+
+    //deletando um endereço do banco de dados
+    public boolean deletarEndereco(Integer id) {
+        repositoryEndereco.deleteById(id);
+        return true;
+    }
 }
