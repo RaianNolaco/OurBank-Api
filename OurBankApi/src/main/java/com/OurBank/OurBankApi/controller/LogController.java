@@ -20,9 +20,8 @@ public class LogController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LogModel>> ListarLog() {
+    public ResponseEntity<List<LogModel>> listarLog() {
         List<LogModel> lista = LogService.ListarLogs();
         return ResponseEntity.status(200).body(lista);
     }
-    //buongiorno
 }
