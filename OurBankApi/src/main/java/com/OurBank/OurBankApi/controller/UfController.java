@@ -30,11 +30,13 @@ public class UfController {
 		return ResponseEntity.status(200).body(lista);
 	}
 
+	//Buscando Uf por id
 	@GetMapping("/{id}")
 	public ResponseEntity<UfModel>buscarUf(@PathVariable int id){
 		return ResponseEntity.status(200).body(ufService.buscarUf(id));
 	}
 
+	// Buscando Uf pela sigla do estado
 	@GetMapping("/uf")
 	public ResponseEntity<UfModel>buscarUfporUf(@RequestHeader String uf){
 		String ufUpper = uf.toUpperCase();

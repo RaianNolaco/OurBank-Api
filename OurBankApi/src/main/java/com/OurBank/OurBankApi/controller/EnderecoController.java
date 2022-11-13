@@ -19,22 +19,26 @@ public class EnderecoController {
 		this.enderecoService = endservice;
 	}
     
+    //Buscando todos endereços
     @GetMapping
     public ResponseEntity<List<EnderecoModel>> ListarEnderecos(){
         List<EnderecoModel> lista = enderecoService.listarEnderecos();
         return ResponseEntity.status(200).body(lista);
     }
 
+    //Registrando um endereço
     @PostMapping
     public ResponseEntity<EnderecoModel> CriarEndereco (@RequestBody EnderecoModel endereco) {
         return ResponseEntity.status(201).body(enderecoService.addEndereco(endereco));
     }
 
+    // Editando um endereço
     @PutMapping
     public ResponseEntity<EnderecoModel> EditarEndereco(@RequestBody EnderecoModel endereco) {
         return ResponseEntity.status(200).body(enderecoService.editaEndereco(endereco));
     }
 
+    //Buscando um endereço por id
     @GetMapping("/{id}")
     public ResponseEntity<EnderecoModel> BuscarEndereco(@PathVariable Integer id){
         return ResponseEntity.status(200).body(enderecoService.buscarEndereco(id));

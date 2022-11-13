@@ -19,6 +19,7 @@ public class LogController {
         this.LogService = logService;
     }
 
+    // Listando todos os logs
     @GetMapping
     public ResponseEntity<List<LogModel>> listarLog() {
         List<LogModel> lista = LogService.ListarLogs();

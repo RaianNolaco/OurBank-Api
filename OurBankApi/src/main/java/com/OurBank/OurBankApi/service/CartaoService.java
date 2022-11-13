@@ -33,6 +33,7 @@ public class CartaoService {
         return cartao;
     }
 
+    // Ativando/destivando aproximação do cartão via ID
     public CartaoModel editarAproximacaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
@@ -45,6 +46,7 @@ public class CartaoService {
         return cartao;
     }
 
+    // Ativando/destivando aproximação do cartão via numero do cartão
     public CartaoModel editarAproximacaoNum (String numeroCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numeroCartao);
 
@@ -57,6 +59,7 @@ public class CartaoService {
         return cartao;
     }
 
+    // Ativando/destivando cartão via ID
     public CartaoModel desativarCartaoId (Integer id) {
         CartaoModel cartao = visualizarCartaoId(id);
 
@@ -70,6 +73,7 @@ public class CartaoService {
         return cartao;
     }
 
+   // Ativando/destivando cartão via Numero do cartão 
     public CartaoModel desativarCartaoNum (String numCartao) {
         CartaoModel cartao = visualizarCartaoNumero(numCartao);
 

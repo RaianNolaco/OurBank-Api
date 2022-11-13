@@ -10,7 +10,6 @@ public class OurBankApiApplication {
 	//metodo main da aplicação, na main que será startado todo o projeto
 	public static void main(String[] args) {
 		SpringApplication.run(OurBankApiApplication.class, args);
-		// mariana passou por aqui
 	}
 
 }

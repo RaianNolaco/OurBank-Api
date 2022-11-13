@@ -16,6 +16,7 @@ public class LogService {
         this.repository = repository;
     }
 
+    // Buscando todos os logs da base de dados
     public List<LogModel> ListarLogs() {
         List<LogModel> listarLog = repository.findAll();
         return listarLog;

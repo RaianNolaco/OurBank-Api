@@ -48,7 +48,7 @@ public class ClienteController {
         return ResponseEntity.status(204).build();
     }
     
-    
+    // Buscando cliente por CPF
     @GetMapping("/cpf")
     public ResponseEntity<ClienteModel> BuscarClientePorCpf(@RequestHeader String cpf){ 
         return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
