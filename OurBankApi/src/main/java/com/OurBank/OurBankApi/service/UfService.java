@@ -26,6 +26,7 @@ public class UfService {
 		return repositoryUf.findById(id).get();
 	}
 	
+	//Buscando Uf por sigla da base de dados
 	public UfModel buscarUfporUF(String uf){
 		return repositoryUf.findByUf(uf);
 	}
