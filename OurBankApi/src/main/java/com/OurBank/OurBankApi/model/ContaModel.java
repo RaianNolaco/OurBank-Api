@@ -28,7 +28,7 @@ public class ContaModel {
     private String agencia;
 
     @Column(name = "saldo", length = 10)
-    private String saldo;
+    private double saldo;
 
     @Column(name = "fk_id_cliente", nullable = false)
     private int fk_id_cliente;
