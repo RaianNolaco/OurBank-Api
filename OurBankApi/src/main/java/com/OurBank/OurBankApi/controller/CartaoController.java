@@ -18,7 +18,7 @@ public class CartaoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CartaoModel>> ListarTodosCartoes(){
+    public ResponseEntity<List<CartaoModel>> listarTodosCartoes(){
         return ResponseEntity.status(200).body(cartaoService.listarTodosCartoes());
     }  
 
@@ -28,7 +28,7 @@ public class CartaoController {
     }
     
     //Destiva a aproximação do cartão por Numero do cartao
-    @PutMapping("/ativaraprocimacao")
+    @PutMapping("/aprocimacao")
     public ResponseEntity<CartaoModel> desativarAproximCartaoNum (@RequestHeader String numeroCartao) {
         return ResponseEntity.status(201).body(cartaoService.editarAproximacaoNum(numeroCartao));
     }
@@ -39,13 +39,13 @@ public class CartaoController {
         return ResponseEntity.status(201).body(cartaoService.editarAproximacaoId(id));
     }
 
-    // Desativa o cartão por ID
+    // Ativa/Desativa o cartão por ID
     @PutMapping("/ativarcartao/{id}")
     public ResponseEntity<CartaoModel> desativarCartaoId (@PathVariable Integer id) {
         return ResponseEntity.status(201).body(cartaoService.desativarCartaoId(id));
     }
 
-    // Desativa o cartão por Numero do cartão
+    // Ativa/Desativa o cartão por Numero do cartão
     @PutMapping("/ativarcartao")
     public ResponseEntity<CartaoModel> desativarCartaoNum (@RequestHeader String numeroCartao) {
         CartaoModel cartao = cartaoService.desativarCartaoNum(numeroCartao);
