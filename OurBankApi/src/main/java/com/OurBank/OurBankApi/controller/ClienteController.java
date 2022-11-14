@@ -1,6 +1,9 @@
 package com.OurBank.OurBankApi.controller;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.ClienteModel;
@@ -25,13 +28,13 @@ public class ClienteController {
 
     // incluindo cliente
     @PostMapping
-    public ResponseEntity<ClienteModel> cadastrarCliente(@RequestBody ClienteModel usuario){
+    public ResponseEntity<ClienteModel> cadastrarCliente(@Valid @RequestBody ClienteModel usuario){
         return ResponseEntity.status(201).body(clienteService.cadastrarCliente(usuario));
     }
 
     // Editando cliente 
     @PutMapping
-    public ResponseEntity<ClienteModel> editarCliente(@RequestBody ClienteModel usuario){
+    public ResponseEntity<ClienteModel> editarCliente(@Valid @RequestBody ClienteModel usuario){
         return ResponseEntity.status(201).body(clienteService.editarCliente(usuario));
     }
 
