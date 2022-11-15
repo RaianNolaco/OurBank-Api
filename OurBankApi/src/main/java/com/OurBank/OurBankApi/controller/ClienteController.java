@@ -3,8 +3,11 @@ package com.OurBank.OurBankApi.controller;
 import java.util.List;
 
 import javax.validation.Valid;
+import com.OurBank.OurBankApi.controller.Validator;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.ClienteModel;
 import com.OurBank.OurBankApi.service.ClienteService;
@@ -56,4 +59,5 @@ public class ClienteController {
     public ResponseEntity<ClienteModel> BuscarClientePorCpf(@RequestHeader String cpf){ 
         return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
     }
+
 }
