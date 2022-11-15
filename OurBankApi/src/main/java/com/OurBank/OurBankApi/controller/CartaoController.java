@@ -26,6 +26,11 @@ public class CartaoController {
     public ResponseEntity<CartaoModel> buscarCartao (@PathVariable Integer id) {
         return ResponseEntity.status(200).body(cartaoService.visualizarCartaoId(id));
     }
+
+    @PostMapping
+    public ResponseEntity<CartaoModel> cadastrarCartao(@RequestBody CartaoModel cartao){
+        return ResponseEntity.status(200).body(cartaoService.cadastrarCartao(cartao));
+    }
     
     //Destiva a aproximação do cartão por Numero do cartao
     @PutMapping("/aproximacao")
@@ -52,5 +57,9 @@ public class CartaoController {
         return ResponseEntity.status(201).body(cartao);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarCartao(@PathVariable int id){
+        return ResponseEntity.status(204).body(cartaoService.deletarCartao(id));
+    }
 
 }
