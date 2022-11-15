@@ -29,6 +29,13 @@ public class CartaoService {
         return cartao;
     }
 
+    // Função para cadastrar um novocartão
+    public CartaoModel cadastrarCartao(CartaoModel cartao){
+        CartaoModel novoCartao = repositoryCartao.save(cartao);
+        logService.gravarLog("CARTAO CADASTRADO | METODO: POST | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta());
+        return novoCartao;
+    }
+
     // Função geral de visualização por NUMERO DO CARTÃO
     public CartaoModel visualizarCartaoNumero (String numCartao) {
         CartaoModel cartao = repositoryCartao.findByNumeroCartao(numCartao);
@@ -42,7 +49,7 @@ public class CartaoService {
         String descricao;
         if (!cartao.isAproximacao()) {
             cartao.setAproximacao(true);
-            descricao = "APROXIMACAO CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta() ;
+            descricao = "APROXIMACAO CARTAO ATIVADO | METODO: PUT | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta();
 
         } else {
             cartao.setAproximacao(false);
@@ -118,5 +125,12 @@ public class CartaoService {
         logService.gravarLog(descricao);
 
         return cartao;
+    }
+
+    public boolean deletarCartao (Integer cartaoId) {
+        CartaoModel cartao = visualizarCartaoId(cartaoId);
+        repositoryCartao.deleteById(cartaoId);
+        logService.gravarLog("CARTAO DELETADO | METODO: DELETE | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta());
+        return true;
     }
 }
