@@ -53,6 +53,17 @@ public class ComprovanteService {
         return transferencias;
     }
 
+    public ComprovanteModel editaDescComprovante(int id, String txt) {
+
+        ComprovanteModel editaComprovante = repository.findById(id).get();
+        editaComprovante.setDescricao(txt);
+
+        String descricao = "COMPROVANTE EDITADO | METODO: PUT | DATA COMPROVANTE : " +editaComprovante.getDataComprovante()+ " | ID CONTA: " + editaComprovante.getFk_id_conta() ;
+        logService.gravarLog(descricao);
+
+        return editaComprovante;
+    }
+
     // Deletando comprovante via ID
     public Boolean deletarComprovante(Integer id) {
 

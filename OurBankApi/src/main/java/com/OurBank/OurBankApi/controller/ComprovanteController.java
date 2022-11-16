@@ -50,6 +50,12 @@ public class ComprovanteController {
         return ResponseEntity.status(200).body(comprovanteService.buscarComprovante(id));
     }
 
+    @PutMapping("/editarDesc/{id}")
+    public ResponseEntity<ComprovanteModel> editarDescComprovante(@PathVariable int id, @RequestHeader String novaDesc){
+        return ResponseEntity.status(201).body(comprovanteService.editaDescComprovante(id, novaDesc));
+    }
+
+
     // Deletando comprovante por ID
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarComprovante(@PathVariable Integer id) {
