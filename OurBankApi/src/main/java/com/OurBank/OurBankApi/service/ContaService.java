@@ -64,4 +64,13 @@ public class ContaService {
     public ContaModel buscarContaPorNumero(String numeroConta){
         return contaRepository.findByNumeroConta(numeroConta);
     }
+
+    public boolean depositar(double valor, int id){
+        ContaModel conta = contaRepository.findById(id).get();
+        conta.setSaldo(conta.getSaldo() + valor);
+        contaRepository.save(conta);
+        return true;
+    }
+
+    
 }

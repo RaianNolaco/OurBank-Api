@@ -50,4 +50,9 @@ public class ContaController {
     public ResponseEntity<ContaModel> buscarContaNumero(@RequestHeader String numeroConta){
         return ResponseEntity.status(200).body(contaService.buscarContaPorNumero(numeroConta));
     }
+
+    @PutMapping("/depositar")
+    public ResponseEntity<?> depositar(@RequestHeader double valor,@RequestHeader int id){
+        return ResponseEntity.status(201).body(contaService.depositar(valor, id));
+    }
 }
