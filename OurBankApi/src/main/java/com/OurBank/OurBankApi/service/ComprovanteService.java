@@ -1,10 +1,7 @@
 package com.OurBank.OurBankApi.service;
 
 import java.util.List;
-
-import org.springframework.data.repository.init.RepositoriesPopulatedEvent;
 import org.springframework.stereotype.Service;
-
 import com.OurBank.OurBankApi.model.ComprovanteModel;
 import com.OurBank.OurBankApi.model.TranferenciasModel;
 import com.OurBank.OurBankApi.repository.IComprovante;
