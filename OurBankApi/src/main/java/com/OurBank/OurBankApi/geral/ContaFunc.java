@@ -2,7 +2,6 @@ package com.OurBank.OurBankApi.geral;
 
 import java.util.Random;
 
-import com.OurBank.OurBankApi.geral.*;
 
 public class ContaFunc {
     public static String numConta () {

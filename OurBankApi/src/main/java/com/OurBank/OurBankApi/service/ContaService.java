@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.OurBank.OurBankApi.model.ContaModel;
 import com.OurBank.OurBankApi.repository.IConta;
 import com.OurBank.OurBankApi.geral.*;
-import com.OurBank.OurBankApi.service.CartaoService;
 
 @Service
 public class ContaService {
