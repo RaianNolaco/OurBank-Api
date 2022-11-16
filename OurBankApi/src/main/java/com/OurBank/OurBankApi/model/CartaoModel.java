@@ -1,9 +1,6 @@
 package com.OurBank.OurBankApi.model;
 
-import java.sql.Date;
-
 import javax.persistence.*;
-
 import lombok.Data;
 
 
@@ -19,11 +16,11 @@ public class CartaoModel {
     @Column(name = "id_cartao")
     private int idCartao;
 
-    @Column(name = "num_cartao", length = 10)
+    @Column(name = "num_cartao", length = 30)
     private String numCartao;
 
     @Column(name = "data_validade", nullable = false)
-    private Date dataValidade;
+    private String dataValidade;
 
     @Column(name = "cvc", length = 3)
     private String cvc;

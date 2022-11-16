@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.OurBank.OurBankApi.geral.CartaoFunc;
 import com.OurBank.OurBankApi.model.CartaoModel;
 import com.OurBank.OurBankApi.repository.ICartao;
 
@@ -30,10 +31,17 @@ public class CartaoService {
     }
 
     // Função para cadastrar um novocartão
-    public CartaoModel cadastrarCartao(CartaoModel cartao){
-        CartaoModel novoCartao = repositoryCartao.save(cartao);
+    public CartaoModel cadastrarCartao(Integer id){
+        CartaoModel cartao = new CartaoModel();
+        cartao.setNumCartao(CartaoFunc.numCartao());
+        cartao.setCvc(CartaoFunc.cvc());
+        cartao.setDataValidade(CartaoFunc.validade());
+        cartao.setAtivo(true);
+        cartao.setFk_id_conta(id);
+
+        repositoryCartao.save(cartao);
         logService.gravarLog("CARTAO CADASTRADO | METODO: POST | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta());
-        return novoCartao;
+        return cartao;
     }
 
     // Função geral de visualização por NUMERO DO CARTÃO

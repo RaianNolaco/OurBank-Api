@@ -1,7 +1,5 @@
 package com.OurBank.OurBankApi.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -34,11 +32,11 @@ public class ContaController {
     }
 
 
-    // Cadastrando uma conta
-    @PostMapping
-    public ResponseEntity<ContaModel> cadastrarConta(@RequestBody ContaModel conta){
-        return ResponseEntity.status(200).body(contaService.cadastrarConta(conta));
-    }
+    // // Cadastrando uma conta
+    // @PostMapping
+    // public ResponseEntity<ContaModel> cadastrarConta(@RequestBody ContaModel conta){
+    //     return ResponseEntity.status(200).body(contaService.cadastrarConta(conta));
+    // }
 
 
     // Deletando conta por Id
