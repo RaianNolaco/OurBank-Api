@@ -25,4 +25,9 @@ public class LogController {
         List<LogModel> lista = LogService.ListarLogs();
         return ResponseEntity.status(200).body(lista);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarLog(@PathVariable int id){
+        return ResponseEntity.status(200).body(LogService.deletarLog(id));
+    }
 }

@@ -34,6 +34,11 @@ public class LogService {
         LogModel log = new LogModel(horario,descricao); 
         repository.save(log);
     }
+
+    public boolean deletarLog(int id) {
+        repository.deleteById(id);
+        return true;
+    }
     
 }
 
