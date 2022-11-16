@@ -18,7 +18,7 @@ public class ContaModel {
     @Column(name = "id_conta")
     private int idConta;
 
-    @Column(name = "num_conta", length = 16)
+    @Column(name = "num_conta", length = 11)
     private String numConta;
 
     @Column(name = "cod_banco", length = 20)
