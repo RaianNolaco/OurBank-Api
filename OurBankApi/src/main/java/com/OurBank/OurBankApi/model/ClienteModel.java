@@ -33,7 +33,7 @@ public class ClienteModel {
 
     @Size(min=5, message="A senha deve, no mínimo, ter 5 caracteres")
     @NotEmpty(message = "A senha é obrigatória!")
-    @Column(name = "senha", length = 11)
+    @Column(name = "senha", columnDefinition = "TEXT", nullable = false)
     private String senha;
 
     @NotEmpty(message = "A data de nascimento é obrigatória!")

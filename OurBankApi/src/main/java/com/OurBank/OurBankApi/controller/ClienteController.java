@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.ClienteModel;
 import com.OurBank.OurBankApi.service.ClienteService;
 
-
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,6 +65,22 @@ public class ClienteController {
     public ResponseEntity<ClienteModel> BuscarClientePorCpf(@RequestHeader String cpf){ 
         return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
     }
+
+    @GetMapping("/email")
+    public ResponseEntity<ClienteModel> BuscarClientePorEmail(@RequestHeader String email){ 
+        return ResponseEntity.status(200).body(clienteService.buscarClientePorEmail(email));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> validarLogin(@RequestHeader String email,@RequestHeader String senha){
+        boolean valid = clienteService.login(email, senha);
+        if(!valid){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return ResponseEntity.status(204).build(); 
+    }
+
 
         /* A função validationException serve para pegar os exeptions vindos das outras classes e retorna
     apenas a mensagem definida por nós ao inves do erro completo*/ 

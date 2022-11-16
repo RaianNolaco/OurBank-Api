@@ -13,9 +13,9 @@ sigla           char(2)
 create table tb_cliente(
 id_cliente           int primary key auto_increment,
 nome                 varchar(50) not null,
-email				 varchar(80) not null,
-cpf                  varchar(11) unique,
-senha				 varchar(20) not null,
+email				 varchar(80) not null unique,
+cpf                  varchar(11) not null unique,
+senha				 text not null,
 data_nasc            date
 );
 
@@ -54,7 +54,6 @@ ativo               boolean not null,
 fk_id_conta         int not null,
 foreign key(fk_id_conta) references tb_conta(id_conta)
 );
-select * from tb_cartao;
 
 create table tb_comprovante(
 id_comprovante           int primary key auto_increment,
@@ -104,11 +103,11 @@ INSERT INTO tb_uf (estado, sigla) VALUES
 ('Tocantins', 'TO');
 
 insert into tb_cliente(nome,email,cpf,senha,data_nasc) values
-("Raian Medeiros","RaiNolac@gmail.com","00000000000","123abc","2002/11/11"),
-("Vyviane Souza","Vyvis@yahoo.com","00000000001","456dfg","2003/12/11"),
-("Mariana Souza","MariSou@hotmail.com","00000000002","789hij","2003/09/08"),
-("Nathalia da Rocha","Rocha@gmail.com","00000000003","101klm","2002/03/10"),
-("Kevin Alvez","Kalves@gmail.com","00000000004","121nop","2004/11/23");
+("RAIAN MEDEIROS","RAINOLAC@GMAIL.COM","00000000000","123ABC","2002/11/11"),
+("VYVIANE SOUZA","VYVIS@YAHOO.COM","00000000001","456DFG","2003/12/11"),
+("MARIANA SOUZA","MARISOU@HOTMAIL.COM","00000000002","789HIJ","2003/09/08"),
+("NATHALIA DA ROCHA","ROCHA@GMAIL.COM","00000000003","101KLM","2002/03/10"),
+("KEVIN ALVEZ","KALVES@GMAIL.COM","00000000004","121NOP","2004/11/23");
 
 insert into tb_endereco (cep,logradouro,numero,complemento,bairro,cidade,fk_id_uf,fk_id_cliente)  values 
 ('01001000','Praça da Sé',"12",'Em frente catedral da sé','Sé','São Paulo',26,2),
