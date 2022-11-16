@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.OurBank.OurBankApi.model.ClienteModel;
 import com.OurBank.OurBankApi.repository.ICliente;
+import com.OurBank.OurBankApi.service.ContaService;
 
 import java.util.List;
 
@@ -11,12 +12,14 @@ import java.util.List;
 public class ClienteService {
 
     private ICliente repositoryCliente;
-    private LogService logService; 
+    private LogService logService;
+    private ContaService contaService; 
 
     
-    public ClienteService(ICliente repositoryCliente, LogService logService){
+    public ClienteService(ICliente repositoryCliente, LogService logService, ContaService contaService){
         this.repositoryCliente = repositoryCliente;
         this.logService = logService;
+        this.contaService = contaService;
     }
 
     //listando todos os clientes 
@@ -28,6 +31,7 @@ public class ClienteService {
     //adicionando um cliente novo
     public ClienteModel cadastrarCliente(ClienteModel cliente){
         ClienteModel novoCliente = repositoryCliente.save(cliente);
+        contaService.cadastrarConta(novoCliente.getIdCliente());
 
         String descricao = "CLIENTE CADASTRADO| METODO: POST | NOME : " +cliente.getNome()+ " | CPF: " + cliente.getCpf() ;
         logService.gravarLog(descricao);

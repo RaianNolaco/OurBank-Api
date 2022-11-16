@@ -15,7 +15,7 @@ public class ClienteModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-    private int idConta;
+    private int idCliente;
 
     @NotEmpty(message = "O nome é obrigatório!")
     @Size(min=2, message="O nome deve, no mínimo, ter 3 caracteres")
