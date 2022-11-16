@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.CartaoModel;
 import com.OurBank.OurBankApi.service.CartaoService;
+import com.OurBank.OurBankApi.geral.CartaoFunc;
 
 @RestController
 @CrossOrigin("*")
@@ -25,11 +26,6 @@ public class CartaoController {
     @GetMapping("/{id}")
     public ResponseEntity<CartaoModel> buscarCartao (@PathVariable Integer id) {
         return ResponseEntity.status(200).body(cartaoService.visualizarCartaoId(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<CartaoModel> cadastrarCartao(@RequestBody CartaoModel cartao){
-        return ResponseEntity.status(200).body(cartaoService.cadastrarCartao(cartao));
     }
     
     //Destiva a aproximação do cartão por Numero do cartao
