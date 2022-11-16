@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.CartaoModel;
 import com.OurBank.OurBankApi.service.CartaoService;
-import com.OurBank.OurBankApi.geral.CartaoFunc;
 
 @RestController
 @CrossOrigin("*")

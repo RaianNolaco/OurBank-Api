@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import com.OurBank.OurBankApi.model.ClienteModel;
 import com.OurBank.OurBankApi.repository.ICliente;
-import com.OurBank.OurBankApi.service.ContaService;
 
 import java.util.List;
 
