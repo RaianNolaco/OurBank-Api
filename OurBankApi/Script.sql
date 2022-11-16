@@ -35,7 +35,7 @@ foreign key(fk_id_cliente) references tb_cliente(id_cliente)
 
 create table tb_conta(
 id_conta           int primary key auto_increment,
-num_conta          varchar(10) not null unique,
+num_conta          varchar(11) not null unique,
 cod_banco          varchar(20) not null,
 agencia            varchar(4) not null,
 saldo              double,

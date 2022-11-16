@@ -1,7 +1,5 @@
 package com.OurBank.OurBankApi.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
