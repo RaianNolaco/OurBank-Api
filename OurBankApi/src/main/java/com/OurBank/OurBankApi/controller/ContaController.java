@@ -2,8 +2,11 @@ package com.OurBank.OurBankApi.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.OurBank.OurBankApi.model.ComprovanteModel;
 import com.OurBank.OurBankApi.model.ContaModel;
 import com.OurBank.OurBankApi.service.ContaService;
 
@@ -54,5 +57,14 @@ public class ContaController {
     @PutMapping("/depositar")
     public ResponseEntity<?> depositar(@RequestHeader double valor,@RequestHeader int id){
         return ResponseEntity.status(201).body(contaService.depositar(valor, id));
+    }
+
+    @PutMapping("/trasferir")
+    public ResponseEntity<ComprovanteModel> trasferir(@RequestHeader String contaBeneficiario, @RequestHeader double valor,@RequestHeader int idMinhaConta){
+       try {
+        return ResponseEntity.status(201).body(contaService.trasferir(contaBeneficiario,valor,idMinhaConta));
+       } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+       }
     }
 }

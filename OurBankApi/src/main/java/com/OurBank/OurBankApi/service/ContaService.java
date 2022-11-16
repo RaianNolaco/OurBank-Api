@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.OurBank.OurBankApi.model.ComprovanteModel;
 import com.OurBank.OurBankApi.model.ContaModel;
 import com.OurBank.OurBankApi.repository.IConta;
+
+
 import com.OurBank.OurBankApi.geral.*;
 
 @Service
@@ -14,11 +17,13 @@ public class ContaService {
     private IConta contaRepository;
     private LogService logService;
     private CartaoService cartaoService;
+    private ComprovanteService comprovanteService;
 
-    public ContaService(IConta contaRepository,LogService logService, CartaoService cartaoService){
+    public ContaService(IConta contaRepository,LogService logService, CartaoService cartaoService,ComprovanteService comprovanteService){
         this.contaRepository = contaRepository;
         this.logService = logService;
         this.cartaoService = cartaoService;
+        this.comprovanteService = comprovanteService;
     }
 
     // Listando todas as contas
@@ -70,6 +75,23 @@ public class ContaService {
         conta.setSaldo(conta.getSaldo() + valor);
         contaRepository.save(conta);
         return true;
+    }
+
+    public ComprovanteModel trasferir(String contaBeneficiario, double valor, int idMinhaConta)throws Exception {
+        ContaModel beneficiarioConta = contaRepository.findByNumeroConta(contaBeneficiario);
+        ContaModel minhaConta =  contaRepository.findById(idMinhaConta).get();
+        
+        if(minhaConta.getSaldo() < valor){
+            throw new Exception("Saldo insuficiente");
+        }
+
+        minhaConta.setSaldo(minhaConta.getSaldo() -  valor);
+        beneficiarioConta.setSaldo(beneficiarioConta.getSaldo() + valor);
+
+        ComprovanteModel comprovante = new ComprovanteModel(valor,contaBeneficiario,"Trasferencia",idMinhaConta);
+        comprovanteService.gerarComprovante(comprovante);
+
+        return comprovante;
     }
 
     
