@@ -2,20 +2,25 @@ package com.OurBank.OurBankApi.service;
 
 import java.util.List;
 
+import org.springframework.data.repository.init.RepositoriesPopulatedEvent;
 import org.springframework.stereotype.Service;
 
 import com.OurBank.OurBankApi.model.ComprovanteModel;
+import com.OurBank.OurBankApi.model.TranferenciasModel;
 import com.OurBank.OurBankApi.repository.IComprovante;
+import com.OurBank.OurBankApi.repository.ITransferencia;
 
 @Service
 public class ComprovanteService {
 
     private IComprovante repository;
+    private ITransferencia repos;
     private LogService logService;
 
-    public ComprovanteService(IComprovante repository,LogService logService) {
+    public ComprovanteService(IComprovante repository,LogService logService, ITransferencia repos) {
         this.repository = repository;
         this.logService = logService;
+        this.repos = repos;
     }
     
     // listando todos os comprovantes da base de dados
@@ -44,6 +49,11 @@ public class ComprovanteService {
     public ComprovanteModel buscarComprovante(int id) {
         ComprovanteModel buscarComprovante = repository.findById(id).get();
         return buscarComprovante;
+    }
+
+    public List<TranferenciasModel> buscarTransferencias (int id) {
+        List<TranferenciasModel> transferencias = repos.findByTranferencia(id);
+        return transferencias;
     }
 
     // Deletando comprovante via ID

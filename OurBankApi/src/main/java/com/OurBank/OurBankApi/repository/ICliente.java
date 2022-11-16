@@ -10,7 +10,7 @@ import com.OurBank.OurBankApi.model.ClienteModel;
 
 public interface ICliente extends JpaRepository<ClienteModel,Integer>, JpaSpecificationExecutor<ClienteModel> {   
    
-    // esse é um selec criado para podermos para buscarmos o cliente via cpd 
+    // esse é um select criado para podermos para buscarmos o cliente via cpd 
     public final static String BUSCAR_POR_CPF = "SELECT * FROM tb_cliente WHERE cpf = :cpf";
     
     // aqui no metodo nos expecificamos para o JPA que queremos execultar a varivel BUSCAR_POR_CPF 

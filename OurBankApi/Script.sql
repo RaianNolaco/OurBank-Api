@@ -157,4 +157,15 @@ select * from tb_conta;
 UPDATE tb_conta SET saldo = saldo + 100 WHERE num_conta = '0000001';
 select * from tb_cartao;
 
-Select * from tb_log;	
+Select * from tb_log;
+
+CREATE VIEW vw_transferencia as
+	SELECT 
+    CLI.nome,
+    CPE.*
+    FROM tb_comprovante   AS CPE
+	INNER JOIN tb_conta   AS CON    ON CON.num_conta = CPE.conta_beneficiario
+    INNER JOIN tb_cliente AS CLI    ON CLI.id_cliente = CON.fk_id_cliente;
+
+
+SELECT * FROM vw_transferencia WHERE fk_id_conta=1;

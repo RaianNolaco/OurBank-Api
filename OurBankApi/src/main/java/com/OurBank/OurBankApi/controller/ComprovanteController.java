@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.OurBank.OurBankApi.model.TranferenciasModel;
 import com.OurBank.OurBankApi.model.ComprovanteModel;
 import com.OurBank.OurBankApi.service.ComprovanteService;
 
@@ -24,6 +25,11 @@ public class ComprovanteController {
     @GetMapping
     public ResponseEntity<List<ComprovanteModel>> listaComprovante() {
         return ResponseEntity.status(200).body(comprovanteService.listaComprovante());
+    }
+
+    @GetMapping("/transf/{id}")
+    public ResponseEntity<List<TranferenciasModel>> listarTransferencias(@PathVariable Integer id) {
+        return ResponseEntity.status(201).body(comprovanteService.buscarTransferencias(id));
     }
     
     // Crindo um comprovante
