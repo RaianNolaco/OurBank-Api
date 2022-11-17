@@ -45,7 +45,7 @@ public class ContaController {
     // Deletando conta por Id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarConta(@PathVariable int id){
-        return ResponseEntity.status(200).body(contaService.deletarConta(id));
+        return ResponseEntity.status(204).body(contaService.deletarConta(id));
     }
 
     // Buscando conta pelo numero da conta

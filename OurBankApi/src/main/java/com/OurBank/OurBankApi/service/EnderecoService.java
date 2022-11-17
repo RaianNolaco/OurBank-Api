@@ -57,4 +57,20 @@ public class EnderecoService {
 
         return true;
     }
+
+    public boolean deletarMeuEndereco(Integer idCliente) {
+        
+        EnderecoModel endereco = buscarMeuEndereco(idCliente);
+        repositoryEndereco.deleteById(endereco.getId_endereco());
+
+        String descricao = "ENDERECO DELETADO | METODO: POST | CEP : " + endereco.getCep()+ " | ID CLIENTE: " + endereco.getIdCliente() ;
+        logService.gravarLog(descricao);
+
+        return true;
+    }
+
+    public EnderecoModel buscarMeuEndereco(Integer id) {
+        EnderecoModel endereco = repositoryEndereco.findByIdCliente(id);
+        return endereco;
+    }
 }

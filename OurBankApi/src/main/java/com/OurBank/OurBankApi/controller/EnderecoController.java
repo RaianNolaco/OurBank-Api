@@ -44,11 +44,22 @@ public class EnderecoController {
         return ResponseEntity.status(200).body(enderecoService.buscarEndereco(id));
     }
 
+    @GetMapping("/idcliente/{id}")
+    public ResponseEntity<EnderecoModel> buscarEnderecoIdCliente(@PathVariable Integer id){
+        return ResponseEntity.status(200).body(enderecoService.buscarMeuEndereco(id));
+    }
+
     //metodo serve para remover resgistro da base de dados
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> DeletarEndereco(@PathVariable Integer id){
+    public ResponseEntity<?> deletarEndereco(@PathVariable Integer id){
         enderecoService.deletarEndereco(id);
         return ResponseEntity.status(204).build();
     }
     
+
+    @DeleteMapping("/idcliente/{id}")
+    public ResponseEntity<?> deletarEnderecoIdCliente(@PathVariable Integer id){
+        enderecoService.deletarMeuEndereco(id);
+        return ResponseEntity.status(204).build();
+    }
 }

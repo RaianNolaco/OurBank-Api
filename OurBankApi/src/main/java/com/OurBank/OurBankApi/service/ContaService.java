@@ -56,9 +56,9 @@ public class ContaService {
 
     // Editando os dados de uma conta
     public boolean deletarConta(int id){
-        contaRepository.deleteById(id);
         ContaModel conta =  contaRepository.findById(id).get();
-
+        contaRepository.deleteById(id);
+        
         String descricao = "CONTRA DELETADA | METODO: DELETE | NUMERO CONTA : " +conta.getNumConta()+ " | ID CLIENTE: " + conta.getFk_id_cliente() ;
         logService.gravarLog(descricao);
 
