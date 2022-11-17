@@ -62,4 +62,10 @@ public class ComprovanteController {
         comprovanteService.deletarComprovante(id);
         return ResponseEntity.status(204).build();
     }
+
+    @DeleteMapping("/deltarcomprovantes/{idConta}")
+    public ResponseEntity<?> deletarMeusComprovantes(@PathVariable int idConta) {
+        comprovanteService.deletarTodosMeusComprovante(idConta);
+        return ResponseEntity.status(204).build();
+    }
 }
