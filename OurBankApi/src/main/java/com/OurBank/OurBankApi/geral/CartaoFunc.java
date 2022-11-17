@@ -6,8 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+// Está classe serve para inserir os dados do cartão como o numero e a data  de validade
 public class CartaoFunc {
 
+    // Este metodo gera uma numero de cartão aleatorio neste formato 0000 0000 0000 0000
     public static String numCartao () {
         Random rdn = new Random();
         
@@ -28,7 +30,7 @@ public class CartaoFunc {
     }
 
 
-
+    // Este metodo gera um cvc aleatorio neste formato 000
     public static String cvc () {
         Random rdm = new Random();
 
@@ -42,7 +44,9 @@ public class CartaoFunc {
         return cvc;
 
     }
+    
 
+    // Este metodo gera uma data de validado 6 anos a frente da criação do cartão
     public static String validade () {
 
         Date x = new Date();

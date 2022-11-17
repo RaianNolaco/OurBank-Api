@@ -17,7 +17,7 @@ public class ClienteService {
     private ContaService contaService; 
     private PasswordEncoder passwordEncoder;
 
-    
+    //Construtor da classe clienteService
     public ClienteService(ICliente repositoryCliente, LogService logService, ContaService contaService){
         this.repositoryCliente = repositoryCliente;
         this.logService = logService;

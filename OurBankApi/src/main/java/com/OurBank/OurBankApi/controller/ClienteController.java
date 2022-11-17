@@ -29,7 +29,7 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    // buisca todos clientes da base de dados
+    // busca todos clientes da base de dados
     @GetMapping
     public ResponseEntity<List<ClienteModel>> listarTodosClientes(){
         return ResponseEntity.status(200).body(clienteService.listarTodosUsuarios());
@@ -66,11 +66,14 @@ public class ClienteController {
         return ResponseEntity.status(200).body(clienteService.buscarClientePorCpf(cpf));
     }
 
+
+    //Buscar cliente por Email
     @GetMapping("/email")
     public ResponseEntity<ClienteModel> BuscarClientePorEmail(@RequestHeader String email){ 
         return ResponseEntity.status(200).body(clienteService.buscarClientePorEmail(email));
     }
 
+    //Fazer login
     @PostMapping("/login")
     public ResponseEntity<?> validarLogin(@RequestHeader String email,@RequestHeader String senha){
         boolean valid = clienteService.login(email, senha);
