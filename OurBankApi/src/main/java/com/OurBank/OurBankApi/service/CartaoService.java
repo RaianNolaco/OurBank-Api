@@ -141,4 +141,15 @@ public class CartaoService {
         logService.gravarLog("CARTAO DELETADO | METODO: DELETE | NUMERO DO CARTAO : " +cartao.getNumCartao()+ " | ID CONTA: " + cartao.getFk_id_conta());
         return true;
     }
+
+    public CartaoModel buscarCartaoIdConta(int idConta){
+        return repositoryCartao.findByIdConta(idConta);  
+    }
+
+    public boolean deletarCartaoIdConta(int idConta) {
+    
+        CartaoModel cartao =  buscarCartaoIdConta(idConta);
+        deletarCartao(cartao.getIdCartao());
+        return true;
+    }
 }
