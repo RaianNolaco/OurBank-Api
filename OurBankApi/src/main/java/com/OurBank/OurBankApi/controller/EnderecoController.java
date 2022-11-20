@@ -6,6 +6,16 @@ import org.springframework.web.bind.annotation.*;
 import com.OurBank.OurBankApi.model.EnderecoModel;
 import com.OurBank.OurBankApi.service.EnderecoService;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @RestController
@@ -28,13 +38,13 @@ public class EnderecoController {
 
     //Registrando um endereço
     @PostMapping
-    public ResponseEntity<EnderecoModel> CriarEndereco (@RequestBody EnderecoModel endereco) {
+    public ResponseEntity<EnderecoModel> CriarEndereco (@Valid @RequestBody EnderecoModel endereco) {
         return ResponseEntity.status(201).body(enderecoService.addEndereco(endereco));
     }
 
     // Editando um endereço
     @PutMapping
-    public ResponseEntity<EnderecoModel> EditarEndereco(@RequestBody EnderecoModel endereco) {
+    public ResponseEntity<EnderecoModel> EditarEndereco(@Valid @RequestBody EnderecoModel endereco) {
         return ResponseEntity.status(200).body(enderecoService.editaEndereco(endereco));
     }
 
@@ -61,5 +71,19 @@ public class EnderecoController {
     public ResponseEntity<?> deletarEnderecoIdCliente(@PathVariable Integer id){
         enderecoService.deletarMeuEndereco(id);
         return ResponseEntity.status(204).build();
+    }
+    
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String,String> validationException (MethodArgumentNotValidException ex) {
+        Map<String,String> erros = new HashMap<>();
+
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            erros.put(fieldName, errorMessage);
+        });
+
+        return erros;
     }
 }
