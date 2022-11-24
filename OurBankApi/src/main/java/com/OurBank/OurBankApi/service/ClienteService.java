@@ -16,13 +16,15 @@ public class ClienteService {
     private LogService logService;
     private ContaService contaService; 
     private PasswordEncoder passwordEncoder;
+    private EnderecoService enderecoService;
 
-    
-    public ClienteService(ICliente repositoryCliente, LogService logService, ContaService contaService){
+    //Construtor da classe clienteService
+    public ClienteService(ICliente repositoryCliente, LogService logService, ContaService contaService,EnderecoService enderecoService){
         this.repositoryCliente = repositoryCliente;
         this.logService = logService;
         this.contaService = contaService;
         this.passwordEncoder = new BCryptPasswordEncoder();
+        this.enderecoService =  enderecoService;
     }
 
     //listando todos os clientes 
@@ -78,6 +80,9 @@ public class ClienteService {
     //deletando um cliente
     public boolean deletarCliente(Integer id) {
         ClienteModel cliente = repositoryCliente.findById(id).get();
+
+        enderecoService.deletarMeuEndereco(id);
+        contaService.deletarMinhaConta(id);
 
         String descricao = "CLIENTE DELETADO | METODO: DELETE | NOME : " +cliente.getNome()+ " | CPF: " + cliente.getCpf() ;
         logService.gravarLog(descricao);

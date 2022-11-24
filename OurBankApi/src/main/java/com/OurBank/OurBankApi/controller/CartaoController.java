@@ -27,6 +27,11 @@ public class CartaoController {
         return ResponseEntity.status(200).body(cartaoService.visualizarCartaoId(id));
     }
     
+    @GetMapping("/numero")
+    public ResponseEntity<CartaoModel> buscarCartaoNumero(@RequestHeader String numero){
+        return ResponseEntity.status(200).body(cartaoService.visualizarCartaoNumero(numero));
+    }
+
     //Destiva a aproximação do cartão por Numero do cartao
     @PutMapping("/aproximacao")
     public ResponseEntity<CartaoModel> desativarAproximCartaoNum (@RequestHeader String numeroCartao) {

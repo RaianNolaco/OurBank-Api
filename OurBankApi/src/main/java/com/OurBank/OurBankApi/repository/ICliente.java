@@ -26,3 +26,16 @@ public interface ICliente extends JpaRepository<ClienteModel,Integer>, JpaSpecif
     public ClienteModel findByEmail(@Param("email")final String email);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+

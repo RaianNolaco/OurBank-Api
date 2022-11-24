@@ -28,6 +28,8 @@ public class ClienteModel {
     private String email;    
    
     @NotEmpty(message = "O CPF é obrigatório!")
+    @Size(min = 11, max = 11, message = "Cpf invalido")
+    
     @Column(name = "cpf", length = 11)
     private String cpf;
 
@@ -37,7 +39,9 @@ public class ClienteModel {
     private String senha;
 
     @NotEmpty(message = "A data de nascimento é obrigatória!")
+    @NotBlank(message = "A data de nascimento não pode ser em branco")
     @Column(name = "data_nasc", nullable = false)
     private String dataNasc;
 
 }
+

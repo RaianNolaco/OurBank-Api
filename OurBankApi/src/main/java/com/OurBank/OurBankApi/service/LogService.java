@@ -27,6 +27,7 @@ public class LogService {
         return listarLog;
     }  
 
+    // meteod de gravar log
     public void gravarLog(String descricao){
         
         String horario = dtf.format(LocalDateTime.now());
@@ -35,6 +36,7 @@ public class LogService {
         repository.save(log);
     }
 
+    // metodo de deletar
     public boolean deletarLog(int id) {
         repository.deleteById(id);
         return true;

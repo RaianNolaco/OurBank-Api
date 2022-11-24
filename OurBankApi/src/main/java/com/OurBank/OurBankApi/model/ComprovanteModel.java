@@ -34,6 +34,9 @@ public class ComprovanteModel {
     @Column(name = "fk_id_conta", nullable = false)
     private int fk_id_conta;
 
+    public ComprovanteModel(){
+    }
+
     public ComprovanteModel(double valor,String contaBeneficiario,String descricao,int fk_id_conta){
             this.valor = valor;
             this.dataComprovante = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss").format(LocalDateTime.now());

@@ -56,8 +56,11 @@ public class ContaService {
 
     // Editando os dados de uma conta
     public boolean deletarConta(int id){
-        contaRepository.deleteById(id);
         ContaModel conta =  contaRepository.findById(id).get();
+        
+        cartaoService.deletarCartaoIdConta(id);
+        comprovanteService.deletarTodosMeusComprovante(id);
+        contaRepository.deleteById(id);
 
         String descricao = "CONTRA DELETADA | METODO: DELETE | NUMERO CONTA : " +conta.getNumConta()+ " | ID CLIENTE: " + conta.getFk_id_cliente() ;
         logService.gravarLog(descricao);
@@ -92,6 +95,16 @@ public class ContaService {
         comprovanteService.gerarComprovante(comprovante);
 
         return comprovante;
+    }
+
+    public ContaModel buscarContaIdCliente(int id){
+        return contaRepository.findByIdCliente(id);
+    }
+
+    public boolean deletarMinhaConta(int idCliente){
+        ContaModel conta = buscarContaIdCliente(idCliente);
+        deletarConta(conta.getIdConta());
+        return true;
     }
 
     

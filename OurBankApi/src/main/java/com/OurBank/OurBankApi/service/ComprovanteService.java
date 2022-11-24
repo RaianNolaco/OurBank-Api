@@ -69,10 +69,26 @@ public class ComprovanteService {
 
         ComprovanteModel comprovante = repository.findById(id).get();
 
+        repository.deleteById(id);
         String descricao = "COMPROVANTE DELTADO| METODO: DELETE | DATA COMPROVANTE : " +comprovante.getDataComprovante()+ " | ID CONTA: " + comprovante.getFk_id_conta() ;
         logService.gravarLog(descricao);
 
-        repository.deleteById(id);
+       
         return true;
     }
+
+    public Boolean deletarTodosMeusComprovante(int idConta) {
+        List<ComprovanteModel> comprovantes = repository.findComprovantesConta(idConta);
+
+        for (ComprovanteModel comprovante : comprovantes) {
+            repository.deleteById(comprovante.getIdComprovante());
+        }
+
+        String descricao = "COMPROVANTES DELTADOS| METODO: DELETE | ID CONTA: " + idConta ;
+        logService.gravarLog(descricao);
+
+     
+        return true;
+    }
+
 }
