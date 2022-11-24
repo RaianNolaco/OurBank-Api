@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.OurBank.OurBankApi.model.ComprovanteModel;
 import com.OurBank.OurBankApi.model.ContaModel;
+import com.OurBank.OurBankApi.model.viewModel.depositoViewModel;
 import com.OurBank.OurBankApi.service.ContaService;
 
 @RestController
@@ -55,8 +56,8 @@ public class ContaController {
     }
 
     @PutMapping("/depositar")
-    public ResponseEntity<?> depositar(@RequestHeader double valor,@RequestHeader int id){
-        return ResponseEntity.status(201).body(contaService.depositar(valor, id));
+    public ResponseEntity<?> depositar(@RequestBody depositoViewModel deposito){
+        return ResponseEntity.status(201).body(contaService.depositar(deposito.valor, deposito.id));
     }
 
     @PutMapping("/trasferir")

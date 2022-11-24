@@ -38,7 +38,7 @@ public class UfController {
 
 	// Buscando Uf pela sigla do estado
 	@GetMapping("/uf")
-	public ResponseEntity<UfModel>buscarUfporUf(@RequestHeader String uf){
+	public ResponseEntity<UfModel>buscarUfporUf(@RequestBody String uf){
 		String ufUpper = uf.toUpperCase();
 		return ResponseEntity.status(200).body(ufService.buscarUfporUF(ufUpper));
 	}
