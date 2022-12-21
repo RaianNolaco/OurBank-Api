@@ -118,6 +118,34 @@ Apos estar com o documento aberto, cloque no plazinho no canto superior direito 
 E pronto seu projeto está rodando!<br>
 ![Screenshot_19](https://user-images.githubusercontent.com/81272272/202070783-64f281b5-bd3e-4657-813e-30bf487fa024.png)
 
+#### 4° Testando o projeto
+
+Copie este link:
+``` https://api.postman.com/collections/23992032-9cf12ff9-fdaa-4b23-8305-e7285be62d15?access_key=PMAT-01GMS9SRNQ9589JE5QASB0FD4R```
+
+
+Entre no seu postman e vá ao import e clique nele<br>
+![Screenshot_6](https://user-images.githubusercontent.com/81272272/208815473-071e7735-90e7-4443-b9c7-a5a3a5915508.png)
+
+Apos clicar em import vá em Link<br>
+![Screenshot_7](https://user-images.githubusercontent.com/81272272/208815941-5e07037a-ad35-4d76-9a33-5f16294a77d0.png)
+
+Cole o link nesta caixa de texto<br>
+![Screenshot_8](https://user-images.githubusercontent.com/81272272/208815997-8d19e092-eeb7-41f2-80c9-0ef7839252d7.png)
+
+E clique em "Continue"<br>
+![Screenshot_9](https://user-images.githubusercontent.com/81272272/208816054-b9bc5514-ff7f-4e43-be70-bd13cdbea78a.png)
+
+Clique em "Import"<br>
+![Screenshot_10](https://user-images.githubusercontent.com/81272272/208816080-cb785af6-a267-425f-ac4f-a4b4767e6d45.png)
+
+E pronto a collection está em seu postman agora é só testar a vontade<br>
+![Screenshot_11](https://user-images.githubusercontent.com/81272272/208816119-85f524d6-892e-41e5-9778-6882f88e2dc7.png)<br>
+![image](https://user-images.githubusercontent.com/81272272/208816402-7cead798-f150-4e5c-9d20-19eaac5bbc1e.png)
+
+
+
+
 ## Algumas considerações finais 
 
 Nos desenvolvemos nossa API com base uma serie de vídeos do canal <a href="https://www.youtube.com/c/MotoCode">Moto code</a> a playlist de videos em que nos baseamos é está <a href="https://www.youtube.com/playlist?list=PLC8TqXFuvRUQt9fX5qeqjuGxuo_dM9Wvv">aqui.</a>
